@@ -1,6 +1,6 @@
-# Netflix-Clone
+
 # Software Requirements Specification
-## For <project name>
+## For Netflix Reimagined
 
 Version 0.1  
 Prepared by <author>  
