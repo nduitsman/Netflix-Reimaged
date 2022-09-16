@@ -1,11 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
-import MoviesList from './components/MoviesList';
+import Trending from './components/Trending';
+import TopRated from './components/TopRated';
+import Popular from './components/Popular';
+import Upcoming from './components/Upcoming';
+import NowPlaying from './components/NowPlaying';
 
 function App() {
   return (
     <div className="App">
-      <MoviesList />
+      <NowPlaying />
     </div>
   );
 }
