@@ -3,41 +3,41 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 
 let moviesArr= []
-let arr1 = []
-let arr2 = []
+let pageCount = 0;
 
 function MoviesList() {
 
     let [moviesOne, setMoviesOne] = useState([]);
-    let [moviesTwo, setMoviesTwo] = useState([]);
-    
-    useEffect(()=> {
-        fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=98855691d0e25912b288deedbe467398&page=1`)
-        .then((res)=> res.json())
-        .then((json) => {
-            setMoviesOne(json)
-            arr1.push(...moviesOne.results)
-        })
-        .catch(console.error)
-    },[]);
 
-    useEffect(()=> {
-        fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=98855691d0e25912b288deedbe467398&page=2`)
-        .then((res)=> res.json())
-        .then((json) => {
-            setMoviesTwo(json)
-            arr2.push(...moviesTwo.results)
-        })
-        .catch(console.error)
+    useEffect( ()=> {
+        for(let i = 1; i < 5; i++){
+                fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=98855691d0e25912b288deedbe467398&page=${i}`)
+                .then((res)=> res.json())
+                .then((json) => {
+                    setTimeout(()=> {
+                        setMoviesOne(prevState => ([
+                        ...prevState, json
+                        ]))
+                    },7000)
+
+                    pageCount++;  
+                })
+                .catch(console.error)
+        }
     },[]);
 
 
-    // console.log(moviesOne.results, moviesTwo.results)
-    moviesArr = [...arr1, ... arr2]
+    console.log(moviesOne[0])
+    if(moviesOne[0]&& moviesOne[1]){
+        for(let i = 0; i < pageCount; i++){
+            moviesArr.push(...moviesOne[i].results)
+        }
+    } else {
+        return <h1>Loading...</h1>
+    }
     console.log(moviesArr)
 
   return (
-
     <section className = "moviesList">
         {moviesArr.map((movie) => {
             let poster = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
@@ -48,8 +48,8 @@ function MoviesList() {
                 movieTitle = movie.name;
             }
             return (
-                <div>
-                    {/* <h1>{movieTitle}</h1> */}
+                <div className='movieCard'>
+                    <h1>{movieTitle}</h1>
                     <img src={poster} alt={movie.title}></img>
                 </div>     
             )

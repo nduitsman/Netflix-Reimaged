@@ -2,7 +2,7 @@
 
 }
 img {
-  width: 15em;
+  width: 10em;
 }
 .moviesList {
   display: flex;
@@ -11,6 +11,15 @@ img {
 }
 h1 {
   font-size: 1em;
+}
+.moviesList h1 {
+  overflow-wrap: break-word;
+}
+.movieCard {
+  border: 2px solid black;
+  word-wrap: break-word;
+  max-width: 10em;
+  max-height: 22em;
 }
 
 
