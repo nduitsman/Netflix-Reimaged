@@ -1,70 +1,108 @@
-# Getting Started with Create React App
+# Project Three - Netflix Reimagined
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+(DEMO GIF OF WORKING PRODUCT)
+![Netflix-Reimagined]()
 
-## Available Scripts
+Version 0.1  
+Prepared by Brendon Van | Nick Duitsman | Sean Buchas
 
-In the project directory, you can run:
+General Assembly SEIR-725ec | Unit 3 Project
+September 15 2022
 
-### `npm start`
+## Project Description
+Netflix Clone but with UI/UX inspired by Jurre Houtkamp & Serge Strokov. 
+Utilized a MERN stack to build a full stack application in 1 week with de-coupled React frontend and Express backend.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
+# Wireframes
+## User Flow Diagram
+![UserFlowDiagram](https://user-images.githubusercontent.com/108159910/190538937-444cd8c5-230b-4445-a748-1921bd77f812.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Home Page
+![Wireframe-HomePage](https://user-images.githubusercontent.com/108159910/190538965-3769a3d5-b08b-4c1f-b6db-921688204cae.png)
+![Wireframe-HomePage-TitleClicked](https://user-images.githubusercontent.com/108159910/190538977-643fa071-8de3-4816-9dcb-d713fbe57074.png)
 
-### `npm test`
+## Movie Details
+![Wireframe-MovieDetails](https://user-images.githubusercontent.com/108159910/190538997-d5458507-099e-4594-9988-70596c1f727a.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# MVP User Stories
 
-### `npm run build`
+***MVP User Stories***
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- *As a user, I want to see multiple lists of movies on the home page, that are categorized in different types. *
+- *As a user, I want to see the movie background preview the trailer of the movie I am hovering on with either my mouse or keyboard select. *
+- *As a user, I want to be able to add and remove movies to my Watch List to watch for later. *
+- *As a user, I want to be able to update my display name and profile picture and delete my account. *
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+***Post MVP Stretch Goals***
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- *As a user, I can drag and drop my picture to upload as my profile picture *
+- *As a user, when I open up the movie details the screen zooms into the currently played background preview. *
+- *As a user, when I open up the website on my phone the design will be responsive and show up properly for my phone size. *
 
-### `npm run eject`
+---
+# ERDs
+USER
+MOVIES
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
+# API
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+[The Movie DB API Documentation](https://developers.themoviedb.org/3/getting-started/introduction)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Now Playing Response
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```json
+{
+  "adult": false,
+  "backdrop_path": "/jsoz1HlxczSuTx0mDl2h0lxy36l.jpg",
+  "id": 616037,
+  "title": "Thor: Love and Thunder",
+  "original_language": "en",
+  "original_title": "Thor: Love and Thunder",
+  "overview": "After his retirement is interrupted by Gorr the God Butcher, a galactic killer who seeks the extinction of the gods, Thor Odinson enlists the help of King Valkyrie, Korg, and ex-girlfriend Jane Foster, who now wields Mjolnir as the Mighty Thor. Together they embark upon a harrowing cosmic adventure to uncover the mystery of the God Butcher’s vengeance and stop him before it’s too late.",
+  "poster_path": "/pIkRyD18kl4FhoCNQuWxWu5cBLM.jpg",
+  "media_type": "movie",
+  "genre_ids": [
+  14,
+  28,
+  35
+  ],
+  "popularity": 3643.289,
+  "release_date": "2022-07-06",
+  "video": false,
+  "vote_average": 6.798,
+  "vote_count": 3274
+}
+```
 
-## Learn More
+## Videos Response
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```json
+{
+  "id": 431693,
+  "results": [
+    {
+      "id": "5bde0d090e0a26058d016b4c",
+      "iso_639_1": "en",
+      "iso_3166_1": "US",
+      "key": "LSSGHvzMY60",
+      "name": "Spies in Disguise | Official Trailer [HD] | Blue Sky Studios",
+      "site": "YouTube",
+      "size": 1080,
+      "type": "Trailer"
+    }
+  ]
+}
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Component Hierarchy
 
-### Code Splitting
+![Component-Hierarchy](https://user-images.githubusercontent.com/108159910/190547438-98d8cded-8777-42a5-af31-a24c581d5f1a.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+# Contributors
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Brendon Van [Github Profile](https://github.com/brendonvan)
+2. Nick Duitsman [Github Profile](https://github.com/nduitsman)
+3. Sean Buchas [Github Profile](https://github.com/SeanBu)
