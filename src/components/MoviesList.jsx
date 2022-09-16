@@ -18,7 +18,7 @@ function MoviesList() {
                         setMoviesOne(prevState => ([
                         ...prevState, json
                         ]))
-                    },7000)
+                    },1000)
 
                     pageCount++;  
                 })
@@ -27,15 +27,15 @@ function MoviesList() {
     },[]);
 
 
-    console.log(moviesOne[0])
-    if(moviesOne[0]&& moviesOne[1]){
+    console.log(moviesOne[pageCount])
+    if(moviesOne[0] && moviesOne[pageCount]){
         for(let i = 0; i < pageCount; i++){
             moviesArr.push(...moviesOne[i].results)
         }
     } else {
         return <h1>Loading...</h1>
     }
-    console.log(moviesArr)
+    // console.log(moviesArr)
 
   return (
     <section className = "moviesList">
