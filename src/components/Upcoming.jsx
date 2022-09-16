@@ -5,12 +5,12 @@ import { useState, useEffect } from 'react'
 let moviesArr= []
 let arr1 = []
 
-function MoviesList() {
+function Upcoming() {
 
     let [moviesOne, setMoviesOne] = useState([]);
     
     useEffect(()=> {
-        fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=98855691d0e25912b288deedbe467398&page=1`)
+        fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=98855691d0e25912b288deedbe467398&language=en-US&page=1`)
         .then((res)=> res.json())
         .then((json) => {
             setMoviesOne(json)
@@ -43,4 +43,4 @@ function MoviesList() {
   )
 }
 
-export default MoviesList
+export default Upcoming
