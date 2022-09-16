@@ -1,6 +1,28 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap');
 
+*, *::before, *::after {
+  box-sizing: border-box;
 }
+
+:root {
+  --font-family: 'Source Sans Pro', sans-serif;
+  --main-bg-color: #121212;
+  --background-highlight: #1a1a1a;
+  --background-press: #000;
+  --text-base: #fff;
+  --text-subdued: #a7a7a7;
+  --now-playing-background: rgba(40, 40, 40, 50%);
+}
+
+html {
+  background-color: var(--background-press);
+}
+
+.App {
+  width: 100vw;
+  height: 100vh;
+}
+
 img {
   width: 10em;
 }
