@@ -25,7 +25,7 @@ Utilized a MERN stack to build a full stack application in 1 week with de-couple
 ## Movie Details
 ![Wireframe-MovieDetails](https://user-images.githubusercontent.com/108159910/190538997-d5458507-099e-4594-9988-70596c1f727a.png)
 
-### MVP User Stories
+# MVP User Stories
 
 ***MVP User Stories***
 
@@ -41,12 +41,16 @@ Utilized a MERN stack to build a full stack application in 1 week with de-couple
 - *As a user, when I open up the website on my phone the design will be responsive and show up properly for my phone size. *
 
 ---
+# ERDs
+USER
+MOVIES
 
-## API
+---
+# API
 
 [The Movie DB API Documentation](https://developers.themoviedb.org/3/getting-started/introduction)
 
-### Now Playing Response
+## Now Playing Response
 
 ```json
 
@@ -74,7 +78,7 @@ Utilized a MERN stack to build a full stack application in 1 week with de-couple
 
 ```
 
-### Videos Response
+## Videos Response
 
 ```json
 {
@@ -94,12 +98,12 @@ Utilized a MERN stack to build a full stack application in 1 week with de-couple
 }
 ```
 
-## Component Hierarchy
+# Component Hierarchy
 
 ![Component-Hierarchy](https://user-images.githubusercontent.com/108159910/190547438-98d8cded-8777-42a5-af31-a24c581d5f1a.png)
 
 
-## Contributors
+# Contributors
 
 1. Brendon Van [Github Profile](https://github.com/brendonvan)
 2. Nick Duitsman [Github Profile](https://github.com/nduitsman)
