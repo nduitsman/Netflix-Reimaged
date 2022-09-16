@@ -1,15 +1,17 @@
-import logo from './logo.svg';
+
 import './App.css';
-import Trending from './components/Trending';
-import TopRated from './components/TopRated';
-import Popular from './components/Popular';
-import Upcoming from './components/Upcoming';
-import NowPlaying from './components/NowPlaying';
+import MoviesList from './components/MoviesList';
+// require('dotenv').config;
+
 
 function App() {
   return (
     <div className="App">
-      <NowPlaying />
+      <MoviesList url = {process.env.REACT_APP_NOW_PLAYING_URL}/>
+      <MoviesList url = {process.env.REACT_APP_POPULAR_URL}/>
+      <MoviesList url = {process.env.REACT_APP_TOP_RATED_URL}/>
+      <MoviesList url = {process.env.REACT_APP_TRENDING_URL}/>
+      <MoviesList url = {process.env.REACT_APP_UPCOMING_URL}/>
     </div>
   );
 }

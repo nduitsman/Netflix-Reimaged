@@ -1,29 +1,24 @@
 import React from 'react'
 // import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+// require('dotenv').config;
 
-let moviesArr= []
-let arr1 = []
 
-function Upcoming() {
-
+function MoviesList(props) {
     let [moviesOne, setMoviesOne] = useState([]);
     
     useEffect(()=> {
-        fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=98855691d0e25912b288deedbe467398&language=en-US&page=1`)
+        fetch(`${props.url}`)
         .then((res)=> res.json())
         .then((json) => {
             setMoviesOne(json)
         })
         .catch(console.error)
-    },[]);
-
-   
-    moviesArr = [moviesOne.results]
+    },[])
     
   return (
-
     <section className = "moviesList">
+        
         {moviesOne.results?.map((movie) => {
             let poster = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
             let movieTitle = '';
@@ -43,4 +38,4 @@ function Upcoming() {
   )
 }
 
-export default Upcoming
+export default MoviesList
