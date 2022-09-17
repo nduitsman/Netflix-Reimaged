@@ -30,7 +30,7 @@ function MoviesList(props) {
             return (
                 <div className='indexCard'>
                     {/* <h1>{movieTitle}</h1> */}
-                    <img src={poster} alt={movie.title}></img>
+                    <img src={poster} alt={movieTitle}></img>
                 </div>     
             )
         })}
