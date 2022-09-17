@@ -6,8 +6,8 @@ import MoviesList from './components/MoviesList';
 
 function App() {
   return (
-    <div className="App">
-      <h1 className = 'horizontalList'>Trening Today</h1>
+    <div className="horizontalContainer">
+      <h1 className = 'horizontalList'>Trending Today</h1>
       <MoviesList url = {process.env.REACT_APP_TRENDING_URL} heading={'Trending Today'}/>
       <h1 className = 'horizontalList'>Popular Titles</h1>
       <MoviesList url = {process.env.REACT_APP_POPULAR_URL} heading={'Popular Titles'}/>

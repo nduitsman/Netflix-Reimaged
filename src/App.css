@@ -22,31 +22,35 @@ html {
   width: 100vw;
   height: 100vh;
 }
+.horizontalContainer{
+  background-color: black;
+  margin: 2em;
+}
 
 img {
-  width: 10em;
+  width: 11em;
 }
 
 .moviesList {
-  gap: 1em;
+  height: 20.5em;
   overflow-x: scroll;
   white-space: nowrap;
-  height: 35;
-  /* overflow: hidden; */
-  overflow: visible;
+  padding-top: 2em;
+}
+.moviesList::-webkit-scrollbar{
+  display: none;
 }
 
 .indexCard {
   display: inline-block;
   margin-right: 1em;
   z-index: 1;
-  padding-top: 1em;
-  padding-bottom: 1em;
+  overflow: visible;
 }
 
 .indexCard:hover {
   /* transform: translateY(-1em); */
-  transform: scale(1.3);
+  transform: scale(1.25);
   transition: 0.5s;
 }
 
@@ -65,11 +69,11 @@ h1 {
 }
 
 .horizontalList {
-  margin-top: 0.3em;
-  font-size: 1.5em;
-  color: red;
-  background-color: transparent;
-  width: 20%;
+  font-size: 1.8em;
+  font-weight: bold;
+  color: rgba(255, 0, 0, 0.798);
+  width: 40%;
+  z-index: -1;
 }
 
 
