@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --font-family: 'Source Sans Pro', sans-serif;
+  --main-bg-color: #121212;
+  --background-highlight: #1a1a1a;
+  --background-press: #000;
+  --text-base: #fff;
+  --text-subdued: #a7a7a7;
+  --now-playing-background: rgba(40, 40, 40, 50%);
+}
+
+html {
+  background-color: var(--background-press);
+}
+
+.App {
+  width: 100vw;
+  height: 100vh;
+}
+.horizontalContainer{
+  background-color: black;
+  margin: 2em;
+}
+
+img {
+  width: 11em;
+}
+
+.moviesList {
+  height: 20.5em;
+  overflow-x: scroll;
+  white-space: nowrap;
+  padding-top: 2em;
+}
+.moviesList::-webkit-scrollbar{
+  display: none;
+}
+
+.indexCard {
+  display: inline-block;
+  margin-right: 1em;
+  z-index: 1;
+  overflow: visible;
+}
+
+.indexCard:hover {
+  /* transform: translateY(-1em); */
+  transform: scale(1.25);
+  transition: 0.5s;
+}
+
+.indexCard > img {
+  border-radius: 10px;
+}
+
+h1 {
+  font-size: 1em;
+}
+
+.moviesList h1 {
+  font-size: 1.6em;
+  overflow-wrap: break-word;
+  margin: 0.5em;
+}
+
+.horizontalList {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: rgba(255, 0, 0, 0.798);
+  width: 40%;
+  z-index: -1;
+}
+
+
