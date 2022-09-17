@@ -26,22 +26,50 @@ html {
 img {
   width: 10em;
 }
+
 .moviesList {
-  display: flex;
   gap: 1em;
-  flex-wrap: wrap;
+  overflow-x: scroll;
+  white-space: nowrap;
+  overflow: hidden;
+  height: 35;
+  overflow: visible;
 }
+
+.indexCard {
+  display: inline-block;
+  margin-right: 1em;
+  z-index: 1;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.indexCard:hover {
+  /* transform: translateY(-1em); */
+  transform: scale(1.3);
+  transition: 0.5s;
+}
+
+.indexCard > img {
+  border-radius: 10px;
+}
+
 h1 {
   font-size: 1em;
 }
+
 .moviesList h1 {
+  font-size: 1.6em;
   overflow-wrap: break-word;
+  margin: 0.5em;
 }
-.movieCard {
-  border: 2px solid black;
-  word-wrap: break-word;
-  max-width: 10em;
-  max-height: 22em;
+
+.horizontalList {
+  margin-top: 0.3em;
+  font-size: 1.5em;
+  color: red;
+  background-color: transparent;
+  width: 20%;
 }
 
 
