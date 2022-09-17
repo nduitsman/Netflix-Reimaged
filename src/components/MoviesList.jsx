@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 
 function MoviesList(props) {
     let [moviesOne, setMoviesOne] = useState([]);
-    
+    console.log(props.heading)
     useEffect(()=> {
         fetch(`${props.url}`)
         .then((res)=> res.json())
@@ -18,7 +18,9 @@ function MoviesList(props) {
     
   return (
     <section className = "moviesList">
-        
+        <div>
+            {/* <h1>{props.heading}</h1> */}
+        </div>
         {moviesOne.results?.map((movie) => {
             let poster = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
             let movieTitle = '';
@@ -28,8 +30,8 @@ function MoviesList(props) {
                 movieTitle = movie.name;
             }
             return (
-                <div>
-                    <h1>{movieTitle}</h1>
+                <div className='indexCard'>
+                    {/* <h1>{movieTitle}</h1> */}
                     <img src={poster} alt={movie.title}></img>
                 </div>     
             )
