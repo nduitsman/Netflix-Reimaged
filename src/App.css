@@ -31,8 +31,8 @@ img {
   gap: 1em;
   overflow-x: scroll;
   white-space: nowrap;
-  overflow: hidden;
   height: 35;
+  /* overflow: hidden; */
   overflow: visible;
 }
 
