@@ -1,7 +1,11 @@
+
+import Header from '../components/home/Header';
 import '../components/home/Login.css'
 
 function Login() {
     return (
+    <>
+        <Header />
         <div className='login-container'>
             <h1 className='header'>Netflicks</h1>
             <form>
@@ -20,6 +24,7 @@ function Login() {
                 <a href='#' class='login-button'>Log In</a>
             </form >
         </div >
+     </>
     )
 }
 
