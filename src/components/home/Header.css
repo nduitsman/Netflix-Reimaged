@@ -1,4 +1,4 @@
-.header {
+.navHeader {
     width: 100%;
     height: 2rem;
     background-color: transparent;
@@ -9,7 +9,7 @@
     justify-content: space-between;
 }
 
-.header a{
+.navHeader a{
     font-family: var(--font-family);
     font-weight: 600;
     text-decoration: none;
