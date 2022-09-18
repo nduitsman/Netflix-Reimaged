@@ -1,7 +1,16 @@
 function Login() {
     return (
         <>
-            <h1>Login</h1>
+            <form>
+                <label>
+                    <span>Username</span>
+                    <input type='text' required name='username' />
+                </label>
+                <label>
+                    <span>Password</span>
+                    <input type='password' required name='password' />
+                </label>
+            </form>
         </>
     )
 }
