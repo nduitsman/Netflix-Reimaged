@@ -3,6 +3,7 @@ import Main from '../components/home/Main';
 import MoviePopUp from '../components/home/MoviePopUp';
 
 function Home() {
+    
     return (
         <>
             <Header />

@@ -5,15 +5,23 @@
   height: 30%;
   background-color: var(--text-base);
   background: linear-gradient(to right, var(--background-highlight) 50%, rgba(22, 22, 22, 10%) 100%);
-  /* animation-name: slideUp;
-  animation-duration: 1s; */
   animation: slideUp .5s ease;
+}
+
+.pop-up-hide {
+  display: none;
+  /* animation: slideDown .5s ease; */
 }
 
 @keyframes slideUp {
   0% { transform: translateY(100%); }
   100% { transform: translateY(0); }
 }
+
+/* @keyframes slideDown {
+  0% { transform: translateY(0%); }
+  100% { transform: translateY(100%); }
+} */
 
 .pop-up-detail-wrapper {
   width: 50%;
@@ -59,6 +67,3 @@
   margin-right: .5em;
 }
 
-.pop-up-hide {
-  display: none;
-}
