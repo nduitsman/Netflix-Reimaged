@@ -1,0 +1,184 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+span {
+    margin: 0 2em 2em 0;
+}
+
+input {
+    width: 20vw;
+    height: 6vh;
+    font-size: larger;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+
+.login-container {
+    padding: 15vh 15vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-image: linear-gradient(to bottom, rgb(43, 42, 42, 1), rgb(43, 42, 42, 0.30));
+    color: #fff;
+    border-radius: 20px;
+}
+
+.form-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: 2.75em;
+    font-weight: bold;
+}
+
+.login-input {
+    border-radius: 100px;
+}
+
+.header {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    color: rgba(255, 0, 0, 0.798);
+    font-size: 3em;
+    font-weight: bold;
+    animation-name: moveFromTop;
+    animation-duration: 1.6s;
+    animation-timing-function: ease-out;
+
+}
+
+.span-password {
+    animation-name: moveFromLeft;
+    animation-duration: 2s;
+    animation-timing-function: ease-out;
+}
+
+.span-username {
+    animation-name: moveFromLeftOver;
+    animation-duration: 1.8s;
+    animation-timing-function: ease-out;
+}
+
+.username-input {
+    animation-name: moveFromRightBigger;
+    animation-duration: 1.6s;
+    animation-timing-function: ease-out;
+}
+
+.password-input {
+    animation-name: moveFromRight;
+    animation-duration: 2s;
+    animation-timing-function: ease-out;
+}
+
+@keyframes moveFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveFromLeftOver {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    96% {
+        transform: translateX(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveFromRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveFromRightBigger {
+    0% {
+        opacity: 0;
+        transform: translateX(165px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveFromTop {
+    0% {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes moveFromBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(200px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.login-button {
+    animation-name: moveFromBottom;
+    animation-duration: 2.2s;
+    animation-timing-function: ease-out;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.login-button:link,
+.login-button:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 25px 50px;
+    display: inline-block;
+    border-radius: 100px;
+    transition: all .2s;
+    position: relative;
+    background-color: #fff;
+    color: #000;
+}
+
+.login-button:hover {
+    transform: translateY(-3.5px);
+    box-shadow: 0 20px 10px rgb(226, 221, 221, .2);
+}
+
+.login-button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 5px rgba(226, 221, 221, .2);
+}

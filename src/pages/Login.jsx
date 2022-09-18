@@ -1,17 +1,25 @@
+import '../components/home/Login.css'
+
 function Login() {
     return (
-        <>
+        <div className='login-container'>
+            <h1 className='header'>Netflicks</h1>
             <form>
                 <label>
-                    <span>Username</span>
-                    <input type='text' required name='username' />
+                    <div className='form-line'>
+                        <span className='span-username'>Username</span>
+                        <input className='login-input username-input' type='text' required name='username' />
+                    </div>
                 </label>
                 <label>
-                    <span>Password</span>
-                    <input type='password' required name='password' />
+                    <div className='form-line'>
+                        <span className='span-password'>Password</span>
+                        <input className='login-input password-input' type='password' required name='password' />
+                    </div>
                 </label>
-            </form>
-        </>
+                <a href='#' class='login-button'>Log In</a>
+            </form >
+        </div >
     )
 }
 
