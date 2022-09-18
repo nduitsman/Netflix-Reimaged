@@ -31,13 +31,14 @@ function MoviePopUp(props) {
     }
 
     return (
-        <div className='pop-up pop-up-hide' >
+        // <div className='pop-up pop-up-hide' >
+        <div className='pop-up' >
             <div className="pop-up-detail-wrapper">
             <img src={ poster } alt="Thor: Love and Thunder"/>
                 <div className="pop-up-detail">
                     <h1>{ movie.title }</h1>
                     
-                    <p>{ movie.overview }</p>
+                    <p>{ movie.overview } testing things here for additional length testing things here for additional length testing things here for additional length testing things here for additional length testing things here for additional length testing things here for additional length </p>
                     <div className="pop-up-buttons">
                         <button className='pop-up-watchlist'>Add To Watch List</button><button className='pop-up-details'>More Details</button>
                     </div>
