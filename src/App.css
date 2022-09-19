@@ -34,7 +34,7 @@ html {
 
 .horizontalContainer {
   background-color: transparent;
-  margin: 2em;
+  padding: 3em;
 
 }
 
@@ -47,6 +47,7 @@ html {
   overflow-x: scroll;
   white-space: nowrap;
   padding-top: 2em;
+  padding-left: 1.4em;
 }
 .moviesList::-webkit-scrollbar {
   display: none;
@@ -85,6 +86,7 @@ h1 {
   color: rgba(255, 0, 0, 0.798);
   width: 40%;
   z-index: -1;
+  padding-left: 0.7em
 }
 
 
