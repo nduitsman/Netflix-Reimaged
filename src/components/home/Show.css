@@ -1,0 +1,86 @@
+.movie-show-page {
+    padding: 5em;
+    display: flex;
+    justify-content: space-between;
+}
+.movie-details-container {
+    max-width: 40%;
+    min-width: 30%;
+}
+.movie-details-container > h1 {
+    font-size: 4em;
+    margin-bottom: 0.7rem;
+}
+.movie-details-container h2 {
+    margin-top: 0.3rem;
+    font-size: 1.3em;
+    font-weight: 500;
+}
+.details-span {
+    margin-right: 0.5em;
+    font-weight: 900;
+}
+
+.details-plot h2{
+    padding-top: 0.8em;
+    font-weight: 600;
+    font-size: 1.6em;
+}
+button {
+    margin-bottom: 0.7rem;
+    background-color: var(--movie-details-buttons);
+    color: var(--text-base);
+    position: relative;
+    border-radius: 10px;
+    border: none;
+    padding: .3em 1em;
+    margin-right: .5em;
+    cursor: pointer;
+    font-weight: bold;
+}
+.movie-details h2{
+    font-weight: 600;
+}
+.movie-metadata-container {
+    width: 25%;
+    min-width: 15em;
+    text-align: right;
+}
+.movie-year-runtime {
+    display: flex;
+    justify-content: right;
+    gap: 0.5em;
+    margin-top: 0.6em;
+    font-size: 0.8em;
+}
+.movie-year-runtime h2 {
+    font-weight: normal;
+}
+.ratings img {
+    width: 2em;
+    margin-right: 0.6em;
+}
+.ratings {
+    display: flex;
+    justify-content: right;
+    font-size: 0.8em;
+}
+.formatting div{
+    margin-top: 1em;
+    display: inline-flex;
+    margin-left: 0.7em;
+    color: white;
+    border: 1px solid white;
+    font-weight: 900;
+    width: fit-content;
+    padding: 0.2em 0.5em;
+    border-radius: 5px;
+    font-size: 0.8em;
+}
+.format4K p{
+    color: black;
+}
+.format4K {
+    background-color: white;
+}
+
