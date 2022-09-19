@@ -21,7 +21,7 @@ function MoviePopUp(props) {
         fetchMovie();
         // console.log('ChangedMovie');
         
-    },[popUp.isHidden])
+    },[popUp])
     // console.log(popUp);
 
     let poster = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
