@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react'
 import './MoviePopUp.css';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 function MoviePopUp(props) {
     let [movie, setMovie] = useState([]);
@@ -21,7 +21,7 @@ function MoviePopUp(props) {
         fetchMovie();
         // console.log('ChangedMovie');
         
-    },[popUp])
+    },[popUp.isHidden])
     // console.log(popUp);
 
     let poster = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
