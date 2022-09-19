@@ -8,7 +8,6 @@ function App() {
   const isLogged = useSelector(state => state.loggedReducer);
   return (
     <>
-      { console.log(isLogged) }
       { isLogged ? <Home /> : <Login />}
     </>
     

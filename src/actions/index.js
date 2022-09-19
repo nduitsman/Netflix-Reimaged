@@ -35,3 +35,11 @@ export const hidePopUp = (movieId) => {
         type: 'HIDE'
     }
 }
+
+export const setPreview = (backdrop_path, movieTitle) => {
+    let movie = { backdrop_path, movieTitle } //backdrop_path: backdrop_path
+    return {
+        type: 'SET_PREVIEW',
+        payload: movie
+    }
+}

@@ -1,0 +1,12 @@
+.backdrop-wrapper {
+    position: absolute;
+    
+    height: 30em;
+    overflow: hidden;
+    z-index: -2;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1.0) 20%, transparent 100%);
+}
+
+.backdrop-image {
+    width: 100%;
+}

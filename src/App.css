@@ -29,12 +29,13 @@ html {
   width: 100vw;
   height: 100vh;
 }
-.horizontalContainer{
-  background-color: black;
+
+.horizontalContainer {
+  background-color: transparent;
   margin: 2em;
 }
 
-img {
+.card-image {
   width: 11em;
 }
 
@@ -44,7 +45,7 @@ img {
   white-space: nowrap;
   padding-top: 2em;
 }
-.moviesList::-webkit-scrollbar{
+.moviesList::-webkit-scrollbar {
   display: none;
 }
 
@@ -82,5 +83,6 @@ h1 {
   width: 40%;
   z-index: -1;
 }
+
 
 
