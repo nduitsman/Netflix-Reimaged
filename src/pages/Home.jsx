@@ -22,10 +22,10 @@ function Home() {
 
     return (
         <div className='home-page'>
-            <Backdrop />
+            {/* <Backdrop />
             <Header />
             
-            <Main />
+            <Main /> */}
             <Show apikey={ process.env.REACT_APP_API_KEY_OMDB} title={'fall'}/>
             <MoviePopUp apikey={ process.env.REACT_APP_API_KEY_TMDB}/>
         </div>
