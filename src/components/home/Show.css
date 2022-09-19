@@ -9,9 +9,10 @@
 @keyframes reveal {
     0% { opacity: 0% }
     100% { opacity: 100% }
-  }
+}
+
 .movie-show-page {
-    position: absolute;
+    position: fixed;
     width: 97%;
     height: 90%;
     top: 0;
@@ -20,7 +21,6 @@
     display: flex;
     justify-content: space-between;
     justify-self: center;
-    background-color: blue;
     border-radius: 30px;
     z-index: 3;
     animation: reveal 1s ease;
@@ -106,3 +106,9 @@ button {
     background-color: white;
 }
 
+.back-arrow {
+    position: absolute;
+    cursor: pointer;
+    top: 1em;
+    left: 1em;
+}

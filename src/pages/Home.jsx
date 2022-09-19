@@ -24,7 +24,6 @@ function Home() {
         <div className='home-page'>
             <Backdrop />
             <Header />
-            
             <Main />
             <Show apikey={ process.env.REACT_APP_API_KEY_OMDB} />
             <MoviePopUp apikey={ process.env.REACT_APP_API_KEY_TMDB}/>

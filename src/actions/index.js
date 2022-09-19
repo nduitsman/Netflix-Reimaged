@@ -36,6 +36,18 @@ export const hidePopUp = () => {
     }
 }
 
+export const transitionDetails = () => {
+    return {
+        type: 'TRANSITION_SHOW'
+    }
+}
+
+export const transitionOffDetails = () => {
+    return {
+        type: 'TRANSITION_HIDE'
+    }
+}
+
 export const setPreview = (backdrop_path, movieTitle) => {
     let movie = { backdrop_path, movieTitle } //backdrop_path: backdrop_path
     return {
