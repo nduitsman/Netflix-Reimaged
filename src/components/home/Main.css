@@ -18,10 +18,14 @@
 .preview-buttons {
     color: white;
     font-weight: bold;
-    background-color: rgba(255, 0, 0, .798);
+    background-color: var(--movie-details-buttons);
     border-radius: 10px;
     border: none;
     padding: .3em 1em;
     margin: 1em .5em;
     cursor: pointer;
-  }
+}
+
+.preview-buttons:hover {
+    background-color: var(--movie-details-buttons-hover);
+}

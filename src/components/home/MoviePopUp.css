@@ -68,11 +68,17 @@
 }
 
 .pop-up-watchlist, .pop-up-details {
+  background-color: var(--movie-details-buttons);
+  color: var(--text-base);
   position: relative;
   border-radius: 10px;
   border: none;
   padding: .3em 1em;
   margin-right: .5em;
   cursor: pointer;
+}
+
+.pop-up-watchlist:hover, .pop-up-details:hover  {
+  background-color: var(--movie-details-buttons-hover);
 }
 
