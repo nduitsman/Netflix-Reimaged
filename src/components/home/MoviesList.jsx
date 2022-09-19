@@ -10,6 +10,7 @@ function MoviesList(props) {
     const popUp = useSelector(state => state.popUpReducer);
     
     let popUpHidden = true;
+    
     const dispatch = useDispatch();
 
     function handleClick(movieId, movieTitle) {

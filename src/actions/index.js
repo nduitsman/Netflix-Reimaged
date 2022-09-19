@@ -30,7 +30,7 @@ export const showPopUp = (movieId, movieTitle) => {
     }
 }
 
-export const hidePopUp = (movieId) => {
+export const hidePopUp = () => {
     return {
         type: 'HIDE'
     }
@@ -40,6 +40,22 @@ export const setPreview = (backdrop_path, movieTitle) => {
     let movie = { backdrop_path, movieTitle } //backdrop_path: backdrop_path
     return {
         type: 'SET_PREVIEW',
+        payload: movie
+    }
+}
+
+export const showDetails = (movieId, movieTitle) => {
+    let movie = { id: movieId, title: movieTitle }
+    return {
+        type: 'SHOW_DETAILS',
+        payload: movie
+    }
+}
+
+export const hideDetails = (movieId, movieTitle) => {
+    let movie = { id: movieId, title: movieTitle }
+    return {
+        type: 'HIDE_DETAILS',
         payload: movie
     }
 }
