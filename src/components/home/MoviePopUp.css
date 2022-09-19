@@ -5,14 +5,23 @@
   height: 20em;
   background-color: var(--text-base);
   background: linear-gradient(to right, var(--background-highlight) 50%, rgba(22, 22, 22, 10%) 100%);
-  /* animation-name: slideUp;
-  animation-duration: 1s; */
   animation: slideUp .5s ease;
+}
+
+.pop-up-hide {
+  /* display: none; */
+  animation: slideDown .5s ease;
+  transform: translateY(100%);
 }
 
 @keyframes slideUp {
   0% { transform: translateY(100%); }
   100% { transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  0% { transform: translateY(0%); }
+  100% { transform: translateY(100%)}
 }
 
 .pop-up-detail-wrapper {
@@ -39,17 +48,13 @@
   border-radius: 10px;
 }
 
-.pop-up-detail {
-  
-}
-
 .pop-up-detail h1{
   font-size: 3em;
 }
 
 .pop-up-detail p{
   max-width: 30em;
-  height: 10em;
+  height: 7em;
   font-size: 1.2em;
   line-height: 1.6em;
   overflow: hidden;
@@ -69,6 +74,3 @@
   margin-right: .5em;
 }
 
-.pop-up-hide {
-  display: none;
-}

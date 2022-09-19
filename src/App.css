@@ -12,6 +12,7 @@
   --text-base: #fff;
   --text-subdued: #a7a7a7;
   --now-playing-background: rgba(40, 40, 40, 50%);
+  
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -29,12 +30,14 @@ html {
   width: 100vw;
   height: 100vh;
 }
-.horizontalContainer{
-  background-color: black;
+
+.horizontalContainer {
+  background-color: transparent;
   margin: 2em;
+
 }
 
-img {
+.card-image {
   width: 11em;
 }
 
@@ -44,7 +47,7 @@ img {
   white-space: nowrap;
   padding-top: 2em;
 }
-.moviesList::-webkit-scrollbar{
+.moviesList::-webkit-scrollbar {
   display: none;
 }
 
@@ -82,5 +85,6 @@ h1 {
   width: 40%;
   z-index: -1;
 }
+
 
 

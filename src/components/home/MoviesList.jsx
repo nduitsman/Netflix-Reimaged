@@ -1,14 +1,28 @@
 import React from 'react';
 // import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react';
-// require('dotenv').config;
+import { useDispatch, useSelector } from 'react-redux';
+import { showPopUp, hidePopUp } from '../../actions';
 
 function MoviesList(props) {
     let [moviesOne, setMoviesOne] = useState([]);
 
+    const popUp = useSelector(state => state.popUpReducer);
+    
+    let popUpHidden = true;
+    const dispatch = useDispatch();
+
     function handleClick(movieId, movieTitle) {
-        
-        console.log(`Clicked ${ movieId } ${ movieTitle }`);
+        if (!popUp.isHidden && (popUp.movieId === movieId)) {
+            dispatch(hidePopUp(movieId, movieTitle));
+            popUpHidden = !popUpHidden;
+        } else if (!popUp.isHidden && (popUp.movieId !== movieId)) {
+            dispatch(showPopUp(movieId, movieTitle));
+            popUpHidden = !popUpHidden;
+        } else {
+            dispatch(showPopUp(movieId, movieTitle));
+            popUpHidden = !popUpHidden;
+        }
     }
 
     useEffect(()=> {
@@ -33,8 +47,7 @@ function MoviesList(props) {
             }
             return (
                 <div className='indexCard' onClick={() => { handleClick(movie.id, movieTitle) }}>
-                    {/* <h1>{movieTitle}</h1> */}
-                    <img src={poster} alt={movieTitle}></img>
+                    <img className='card-image' src={poster} alt={movieTitle}></img>
                 </div>     
             )
         })}
