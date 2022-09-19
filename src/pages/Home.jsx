@@ -1,9 +1,28 @@
+
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { hidePopUp } from '../actions';
 import Header from '../components/home/Header';
 import Backdrop from '../components/home/Backdrop';
 import Main from '../components/home/Main';
 import MoviePopUp from '../components/home/MoviePopUp';
 
 function Home() {
+    const dispatch = useDispatch();
+    useEffect(() => {
+  
+        const handleScroll = event => {
+          dispatch(hidePopUp());
+        };
+    
+        window.addEventListener('scroll', handleScroll);
+    
+        return () => {
+          window.removeEventListener('scroll', handleScroll);
+        };
+      }, []);
+    
+
     return (
         <div className='home-page'>
             <Backdrop />
