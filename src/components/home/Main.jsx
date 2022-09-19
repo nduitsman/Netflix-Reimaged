@@ -1,13 +1,29 @@
 import './Main.css';
 import MoviesList from './MoviesList';
+import { useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { hidePopUp } from '../../actions';
 
 function Main() {
+    const ref = useRef(null);
     const backdropData = useSelector(state => state.backdropReducer);
     const backdropTitle = backdropData.movieTitle
 
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+    }, []);
+    
+    const handleClick = event => {
+        if (event.target.className !== 'card-image') {
+            dispatch(hidePopUp());
+        }
+    };
+        
+    
+
     return (
-        <div className="horizontalContainer">
+        <div className="horizontalContainer" onClick={ (event) => { handleClick(event) } }>
             <div className="preview-details">
                 <h1 className='preview-title'>{ backdropTitle.toUpperCase() }</h1>
                 <div><button className='preview-buttons'>Add To Watch List</button><button className='preview-buttons'>More Details</button></div>

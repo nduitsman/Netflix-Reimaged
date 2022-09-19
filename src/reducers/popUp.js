@@ -1,6 +1,6 @@
 const initialState = {
-    movieId: 0,
-    title: '',
+    movieId: 532639,
+    title: 'Pinocchio',
     isHidden: true
 }
 

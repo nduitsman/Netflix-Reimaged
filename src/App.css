@@ -12,7 +12,8 @@
   --text-base: #fff;
   --text-subdued: #a7a7a7;
   --now-playing-background: rgba(40, 40, 40, 50%);
-  
+  --movie-details-buttons: rgba(255, 0, 0, .798);
+  --movie-details-buttons-hover: rgba(255, 0, 0, .5);
 }
 
 h1, h2, h3, h4, h5, h6, p {
