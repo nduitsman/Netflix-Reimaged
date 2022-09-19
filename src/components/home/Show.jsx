@@ -1,16 +1,25 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import './Show.css'
-import { useDispatch, useSelector } from 'react-redux'
-
+import './Show.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { hideDetails, hidePopUp, transitionOffDetails } from '../../actions';
 
 function Show(props) {
     
     let [movie, setMovie] = useState([]);
     const details = useSelector(state => state.detailsReducer);
+    const dispatch = useDispatch();
 
+    function handleBack() {
+        // set details page to hide
+        // set pop up to hide
+        dispatch(hideDetails());
+        dispatch(hidePopUp());
+        dispatch(transitionOffDetails());
+    }
+    console.log(details);
     useEffect(() => {
-        fetch(`https://www.omdbapi.com/?apikey=${[props.apikey]}&t=${details.title}`)
+        fetch(`https://www.omdbapi.com/?apikey=${props.apikey}&t=${details.title}`)
             .then((res) => res.json())
             .then((json) => {
                 setMovie(json);
@@ -18,13 +27,6 @@ function Show(props) {
             .catch(console.error)
     }, [])
 
-    // let title = '';
-    // if(movie.Title) {
-    //     title = movie.Title;
-
-    // } else {
-    //     title = movie.Name;
-    // }
     let ratingsIMDB = '';
     let ratingsRotten = '';
     let ratingsMeta = '';
@@ -44,10 +46,11 @@ function Show(props) {
         }
     }
 
-console.log(details.isHidden)
+// console.log(details.isHidden)
     return (
         <div className = 'showContainer'>
             <div className = { details.isHidden ? 'movie-show-page-hidden' : 'movie-show-page'}>
+                <img className='back-arrow' src="./icons/icons8-back.svg" alt="back-arrow" onClick={() => { handleBack() }}/>
                 <div className = 'movie-details-container'>
                     <h1>{ movie.Title }</h1>
                     <button>Add to Watch List</button>
