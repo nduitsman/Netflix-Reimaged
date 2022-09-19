@@ -11,15 +11,11 @@ function Home() {
     const dispatch = useDispatch();
     useEffect(() => {
   
-        const handleScroll = event => {
+        const handleMovement = event => {
           dispatch(hidePopUp());
         };
     
-        window.addEventListener('scroll', handleScroll);
-    
-        return () => {
-          window.removeEventListener('scroll', handleScroll);
-        };
+        window.addEventListener('scroll', handleMovement);
       }, []);
     
 
