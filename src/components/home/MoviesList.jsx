@@ -47,7 +47,7 @@ function MoviesList(props) {
             }
             return (
                 <div className='indexCard' onClick={() => { handleClick(movie.id, movieTitle) }}>
-                    <img src={poster} alt={movieTitle}></img>
+                    <img className='card-image' src={poster} alt={movieTitle}></img>
                 </div>     
             )
         })}

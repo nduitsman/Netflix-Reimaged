@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 function MoviePopUp(props) {
     let [movie, setMovie] = useState([]);
+
     const popUp = useSelector(state => state.popUpReducer);
 
     function fetchMovie() {
@@ -21,7 +22,7 @@ function MoviePopUp(props) {
         // console.log('ChangedMovie');
         
     },[popUp])
-    console.log(popUp);
+    // console.log(popUp);
 
     let poster = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
     let movieTitle = '';

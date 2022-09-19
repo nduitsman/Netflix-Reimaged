@@ -9,8 +9,9 @@
 }
 
 .pop-up-hide {
-  display: none;
-  /* animation: slideDown .5s ease; */
+  /* display: none; */
+  animation: slideDown .5s ease;
+  transform: translateY(100%);
 }
 
 @keyframes slideUp {
@@ -18,10 +19,10 @@
   100% { transform: translateY(0); }
 }
 
-/* @keyframes slideDown {
+@keyframes slideDown {
   0% { transform: translateY(0%); }
-  100% { transform: translateY(100%); }
-} */
+  100% { transform: translateY(100%)}
+}
 
 .pop-up-detail-wrapper {
   width: 50%;
