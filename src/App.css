@@ -35,7 +35,6 @@ html {
 .horizontalContainer {
   background-color: transparent;
   padding: 3em;
-
 }
 
 .card-image {
@@ -88,6 +87,4 @@ h1 {
   z-index: -1;
   padding-left: 0.7em
 }
-
-
 
