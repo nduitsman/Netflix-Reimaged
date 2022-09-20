@@ -1,6 +1,8 @@
-export const signIn = () => {
+export const setCurrentUser = (username, watchlistId) => {
+    let currentUser = { username, watchlistId }
     return {
-        type: 'SIGN_IN'
+        type: 'SET_CURRENTUSER',
+        payload: currentUser
     }
 }
 
