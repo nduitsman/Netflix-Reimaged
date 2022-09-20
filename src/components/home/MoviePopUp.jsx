@@ -77,7 +77,7 @@ function MoviePopUp(props) {
                 <iframe 
                     // width="1920" 
                     // height="1080"
-                    src="https://www.youtube.com/embed/oQMc7Sq36mI?&autoplay=1&start=30&modestbranding=1&controls=0&mute=1" 
+                    src="https://www.youtube.com/embed/oQMc7Sq36mI?&autoplay=1&loop=1&start=140&modestbranding=1&controls=0&mute=0" 
                     frameborder="0"
                     allowfullscreen>
                 </iframe>
