@@ -2,7 +2,7 @@ import React from 'react';
 // import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { showPopUp, hidePopUp } from '../../actions';
+import { showPopUp, hidePopUp, updateId } from '../../actions';
 
 function MoviesList(props) {
     let [moviesOne, setMoviesOne] = useState([]);
@@ -18,12 +18,24 @@ function MoviesList(props) {
             dispatch(hidePopUp(movieId, movieTitle));
             popUpHidden = !popUpHidden;
         } else if (!popUp.isHidden && (popUp.movieId !== movieId)) {
+            fetchTrailer(movieTitle)
             dispatch(showPopUp(movieId, movieTitle));
             popUpHidden = !popUpHidden;
         } else {
+            fetchTrailer(movieTitle)
             dispatch(showPopUp(movieId, movieTitle));
             popUpHidden = !popUpHidden;
         }
+    }
+
+    function fetchTrailer(title) {
+        fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${ title }%20trailer&key=AIzaSyCVAjMhStDjG2OltI6HZ98uyd9PmiNwDtc`)
+        .then((res)=> res.json())
+        .then((json) => {
+            let trailerId = json.items[0].id.videoId;
+            dispatch(updateId(trailerId));
+        })
+        .catch(console.error)
     }
 
     useEffect(()=> {
