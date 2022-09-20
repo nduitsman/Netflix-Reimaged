@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import './Show.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { hideDetails, hidePopUp, transitionOffDetails } from '../../actions';
+import MoviesList from './MoviesList';
 
 function Show(props) {
     
@@ -22,27 +23,32 @@ function Show(props) {
         fetch(`https://www.omdbapi.com/?apikey=${props.apikey}&t=${details.title}`)
             .then((res) => res.json())
             .then((json) => {
+                console.log(json);
                 setMovie(json);
             })
             .catch(console.error)
-    }, [])
+    }, [details])
 
-    let ratingsIMDB = '';
-    let ratingsRotten = '';
-    let ratingsMeta = '';
+    let ratingsIMDB = 'N/A';
+    let ratingsRotten = 'N/A';
+    let ratingsMeta = 'N/A';
 
     if (movie.Ratings) {
-        if (movie.Ratings[0] !== 'N/A') {
-            ratingsIMDB = movie.Ratings[0].Value;
-            // display logo IMDB
-        }
-        if (movie.Ratings[1] !== 'N/A') {
-            ratingsRotten = movie.Ratings[1].Value;
-            // display logo Rotten Tomatoes
-        }
-        if (movie.Ratings[2] !== 'N/A') {
-            ratingsMeta = movie.Ratings[2].Value;
-            // display logo Metacritic
+        for (let i = 0; i < movie.Ratings.length; i++) {
+            switch(movie.Ratings[i].Source) {
+                case 'Internet Movie Database':
+                    ratingsIMDB = movie.Ratings[i].Value;
+                    break;
+                case 'Rotten Tomatoes':
+                    ratingsRotten = movie.Ratings[i].Value;
+                    break;
+                case 'Metacritic':
+                    ratingsMeta = movie.Ratings[i].Value;
+                    break;
+                default:
+                    console.log('Rating Source Not Found');
+                }
+            
         }
     }
 

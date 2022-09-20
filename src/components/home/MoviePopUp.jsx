@@ -27,6 +27,7 @@ function MoviePopUp(props) {
 
     function handleDetailsClick() {
         if(!details.showDetails){
+            // console.log(movieTitle)
             dispatch(showDetails(popUp.movieId, movieTitle));
             dispatch(transitionDetails());
         } else {
