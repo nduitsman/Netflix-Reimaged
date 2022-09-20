@@ -1,15 +1,20 @@
 import './App.css'
 import Home from './pages/Home';
 import Login from './pages/Login';
+import Watchlist from './pages/Watchlist';
 import Register from './pages/Register';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { clearUserToken, setUserToken } from './utils/authToken';
+import { setCurrentUser } from './actions';
 
 function App() {
-  const [currentUser, setCurrentUser] = useState({});
+  const dispatch = useDispatch();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  
+
 
   const registerUser = async (data) => {
     try {
@@ -26,7 +31,6 @@ function App() {
       const parsedUser = await newUser.json();
 
       setUserToken(parsedUser.token);
-      setCurrentUser(parsedUser.currentUser);
       setIsAuthenticated(parsedUser.loggedIn);
       return parsedUser;
     } catch (err) {
@@ -46,13 +50,16 @@ function App() {
         },
       }
       const response = await fetch("http://localhost:4000/auth/login", configs)
-      const user = await response.json();
+      const currentUser = await response.json();
+      //console.log(currentUser.token) // if undefined return to login page if, token exist send to main page
 
-      setUserToken(user.token);
-      setCurrentUser(user.currentUser);
-      setIsAuthenticated(user.loggedIn);
+      // TODO: CREATE REDUX STATE TO HOLD CURRENT USER INFO (Username, WatchlistID, User Picture)
+      dispatch(setCurrentUser(currentUser.user.username));
+      
+      setUserToken(currentUser.token);
+      setIsAuthenticated(currentUser.loggedIn);
 
-      return user;
+      return currentUser;
     } catch (err) {
       clearUserToken();
       setIsAuthenticated(false);
@@ -63,6 +70,7 @@ function App() {
     <Routes>
       <Route path='/register' element={<Register signUp={registerUser} />}></Route>
       <Route path='/login' element={<Login logIn={loginUser} />}></Route>
+      <Route path='/watchlist' element={<Watchlist />}></Route>
       <Route path='/' element={<Home />}></Route>
     </Routes>
   );
