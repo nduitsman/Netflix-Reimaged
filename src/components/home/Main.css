@@ -1,7 +1,7 @@
 
 .preview-details {
     width: 60%;
-    margin: 9rem 0;
+    margin: 3rem 0 5rem 4rem;
     display: flex;
     flex-flow: wrap column;
     justify-content: center;
@@ -10,9 +10,10 @@
 .preview-title {
     font-size: 4em;
     font-weight: 900;
-    -webkit-text-stroke: 0.6px black;
+    /* -webkit-text-stroke: 0.6px black; */
     line-height: 0.8em;
     letter-spacing: -0.03em;
+    margin-left: .1em;
 }
 
 .preview-buttons {
