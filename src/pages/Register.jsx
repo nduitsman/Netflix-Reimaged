@@ -13,7 +13,7 @@ const Register = (props) => {
         const createdUserToken = await props.signUp(input);
 
         if (createdUserToken) {
-            navigate('/');
+            navigate('/login');
         } else {
             navigate("/")
         }

@@ -1,5 +1,5 @@
-export const setCurrentUser = (username, watchlistId) => {
-    let currentUser = { username, watchlistId }
+export const setCurrentUser = (username, userId, watchlistId) => {
+    let currentUser = { username, userId, watchlistId }
     return {
         type: 'SET_CURRENTUSER',
         payload: currentUser

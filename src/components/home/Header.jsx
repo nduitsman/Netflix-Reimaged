@@ -16,7 +16,6 @@ function Header() {
             <div className="nav"><a href="#">Home</a><a href="#">All Movies</a><Link to={ activeUser.username !== '' ? '/watchlist' : '/login' }>Watch List</Link></div>
             <p>{ activeUser.username }</p>
             <Link to='/login'><div className="account"><img src="/icons/icons8-male-user.svg" alt="account-icon" /></div></Link>
-            
         </div>
     )
 }
