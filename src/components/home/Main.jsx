@@ -3,6 +3,7 @@ import MoviesList from './MoviesList';
 import { useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { hidePopUp } from '../../actions';
+import Genres from './Genres';
 
 function Main() {
     const ref = useRef(null);
@@ -26,9 +27,9 @@ function Main() {
         <div className="horizontalContainer" onClick={ (event) => { handleClick(event) } }>
             <div className="preview-details">
                 <h1 className='preview-title'>{ backdropTitle.toUpperCase() }</h1>
-                <div><button className='preview-buttons'>Add To Watch List</button><button className='preview-buttons'>More Details</button></div>
-                
+                <div><button className='preview-buttons'>Add To Watch List</button><button className='preview-buttons'>More Details</button></div> 
             </div>
+            <Genres />
             <h1 className = 'horizontalList'>Trending Today</h1>
             <MoviesList url = {process.env.REACT_APP_TRENDING_URL} />
             <h1 className = 'horizontalList'>Popular Titles</h1>
