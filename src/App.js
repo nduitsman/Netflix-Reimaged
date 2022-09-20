@@ -1,6 +1,7 @@
 import './App.css'
 import Home from './pages/Home';
 import Login from './pages/Login';
+import Watchlist from './pages/Watchlist';
 import Register from './pages/Register';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
@@ -69,6 +70,7 @@ function App() {
     <Routes>
       <Route path='/register' element={<Register signUp={registerUser} />}></Route>
       <Route path='/login' element={<Login logIn={loginUser} />}></Route>
+      <Route path='/watchlist' element={<Watchlist />}></Route>
       <Route path='/' element={<Home />}></Route>
     </Routes>
   );
