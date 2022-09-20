@@ -74,7 +74,15 @@ function MoviePopUp(props) {
             <div className={ details.showDetails ? "background-gradient-none" : "background-gradient" }></div> { /* Here */ }
 
             <div className={ details.showDetails ? "pop-up-video-show" : "pop-up-video"}>
-                <img src={ backdrop } alt={ movie.title } />
+                <iframe 
+                    // width="1920" 
+                    // height="1080"
+                    src="https://www.youtube.com/embed/oQMc7Sq36mI?&autoplay=1&start=30&modestbranding=1&controls=0&mute=1" 
+                    frameborder="0"
+                    allowfullscreen>
+                </iframe>
+                
+                {/* <img src={ backdrop } alt={ movie.title } /> */}
             </div>
         </div>
   )

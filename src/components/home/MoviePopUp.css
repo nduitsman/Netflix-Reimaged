@@ -133,16 +133,29 @@
 }
 
 .pop-up-video {
+  display: flex;
+  align-items: center;
   width: 120%;
   height: 100%;
-  
   z-index: 1;
+  overflow: hidden;
 }
 
-.pop-up-video img {
+.pop-up-video iframe{
+  position: relative;
+}
+
+.pop-up-video-show iframe {
+  position: absolute;
+  top: -35%;
+  left: -40%;
+  width: 180vw;
+  height: 170vh;
+  
+}
+
+.pop-up-video iframe {
   width: 100%;
+  height: 140%;
 }
 
-.pop-up-video-show img {
-  width: 100vw;
-}
