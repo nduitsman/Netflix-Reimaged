@@ -14,6 +14,7 @@
 .movie-show-page {
     position: fixed;
     width: 100%;
+    min-width: 800px;
     height: 100%;
     top: 0;
     padding: 5em;
@@ -26,15 +27,15 @@
 }
 .movie-details-container {
     max-width: 40%;
-    min-width: 30%;
+    min-width: 30em;
 }
 .movie-details-container > h1 {
-    font-size: 4em;
+    font-size: 5vw;
     margin-bottom: 0.7rem;
 }
 .movie-details-container h2 {
     margin-top: 0.3rem;
-    font-size: 1.3em;
+    font-size: 1.6vw;
     font-weight: 500;
 }
 .details-span {
@@ -45,7 +46,7 @@
 .details-plot h2{
     padding-top: 0.8em;
     font-weight: 600;
-    font-size: 1.6em;
+    font-size: 2vw;
 }
 button {
     margin-bottom: 0.7rem;
