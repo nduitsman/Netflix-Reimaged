@@ -21,7 +21,7 @@
     justify-content: space-between;
     justify-self: center;
     z-index: 3;
-    animation: reveal 1s ease;
+    animation: reveal .7s ease;
     background-color: rgba(0,0,0,50%);
 }
 .movie-details-container {
@@ -98,9 +98,11 @@ button {
     border-radius: 5px;
     font-size: 0.8em;
 }
+
 .format4K p{
     color: black;
 }
+
 .format4K {
     background-color: white;
 }
