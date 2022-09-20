@@ -18,12 +18,12 @@ function Show(props) {
         dispatch(hidePopUp());
         dispatch(transitionOffDetails());
     }
-    console.log(details);
+    // console.log(details);
     useEffect(() => {
         fetch(`https://www.omdbapi.com/?apikey=${props.apikey}&t=${details.title}`)
             .then((res) => res.json())
             .then((json) => {
-                console.log(json);
+                // console.log(json);
                 setMovie(json);
             })
             .catch(console.error)

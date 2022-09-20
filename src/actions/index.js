@@ -36,6 +36,13 @@ export const hidePopUp = () => {
     }
 }
 
+export const updateId = (trailerId) => {
+    return {
+        type: 'UPDATE_ID',
+        payload: trailerId
+    }
+}
+
 export const transitionDetails = () => {
     return {
         type: 'TRANSITION_SHOW'

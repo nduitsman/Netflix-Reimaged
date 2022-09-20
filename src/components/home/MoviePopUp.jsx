@@ -11,6 +11,20 @@ function MoviePopUp(props) {
     const details = useSelector(state => state.detailsReducer);
     const dispatch = useDispatch();
 
+    let poster = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+    let backdrop = `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
+    let movieTitle = '';
+
+    useEffect(()=> {
+        fetchMovie();
+    },[popUp])
+
+    if(movie.title) {
+        movieTitle = movie.title;
+    } else {
+        movieTitle = movie.name;
+    }
+
     function fetchMovie() {
         fetch(`https://api.themoviedb.org/3/movie/${ popUp.movieId }?api_key=${ props.apikey }&language=en-US`)
         .then((res)=> res.json())
@@ -19,16 +33,11 @@ function MoviePopUp(props) {
         })
         .catch(console.error)
     }
-
-    useEffect(()=> {
-        fetchMovie();
-    },[popUp])
  
-
     function handleDetailsClick() {
         if(!details.showDetails){
             // console.log(movieTitle)
-            dispatch(showDetails(popUp.movieId, movieTitle));
+            dispatch(showDetails(popUp.movieId, movieTitle ));
             dispatch(transitionDetails());
         } else {
             dispatch(hideDetails());
@@ -45,16 +54,6 @@ function MoviePopUp(props) {
         } else {
             return 'pop-up';
         }
-    }
-
-    let poster = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-    let backdrop = `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
-    let movieTitle = '';
-
-    if(movie.title) {
-        movieTitle = movie.title;
-    } else {
-        movieTitle = movie.name;
     }
 
     return (
@@ -74,15 +73,18 @@ function MoviePopUp(props) {
             <div className={ details.showDetails ? "background-gradient-none" : "background-gradient" }></div> { /* Here */ }
 
             <div className={ details.showDetails ? "pop-up-video-show" : "pop-up-video"}>
-                <iframe 
+                
+                { popUp.trailerId ? <iframe 
                     // width="1920" 
                     // height="1080"
-                    src="https://www.youtube.com/embed/oQMc7Sq36mI?&autoplay=1&start=30&modestbranding=1&controls=0&mute=1" 
-                    frameborder="0"
-                    allowfullscreen>
-                </iframe>
+                    src={ `https://www.youtube.com/embed/${ popUp.trailerId }?&playlist=${ popUp.trailerId }&autoplay=1&loop=1&start=30&end=60&modestbranding=1&controls=0&mute=1` } 
+                    frameBorder="0"
+                    allowFullScreen>
+                        
+                </iframe> : <img width='100%' src={ backdrop } alt={ movie.title } />}
                 
-                {/* <img src={ backdrop } alt={ movie.title } /> */}
+                
+                
             </div>
         </div>
   )
