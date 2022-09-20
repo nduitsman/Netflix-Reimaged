@@ -54,7 +54,7 @@ function App() {
       //console.log(currentUser.token) // if undefined return to login page if, token exist send to main page
 
       // TODO: CREATE REDUX STATE TO HOLD CURRENT USER INFO (Username, WatchlistID, User Picture)
-      dispatch(setCurrentUser(currentUser.user.username));
+      dispatch(setCurrentUser(currentUser.user.username, currentUser.user._id));
       
       setUserToken(currentUser.token);
       setIsAuthenticated(currentUser.loggedIn);
