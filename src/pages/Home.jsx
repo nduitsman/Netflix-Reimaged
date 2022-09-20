@@ -10,6 +10,9 @@ import Show from '../components/home/Show';
 
 function Home() {
     const dispatch = useDispatch();
+  
+
+
     useEffect(() => {
   
         const handleMovement = event => {
