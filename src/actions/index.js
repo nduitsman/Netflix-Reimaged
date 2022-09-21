@@ -57,8 +57,8 @@ export const transitionOffDetails = () => {
     }
 }
 
-export const setPreview = (backdrop_path, movieTitle) => {
-    let movie = { backdrop_path, movieTitle } //backdrop_path: backdrop_path
+export const setPreview = (backdrop_path, movieTitle, movieId, posterURL) => {
+    let movie = { backdrop_path, movieTitle, movieId, posterURL } //backdrop_path: backdrop_path
     return {
         type: 'SET_PREVIEW',
         payload: movie
@@ -78,5 +78,18 @@ export const hideDetails = (movieId, movieTitle) => {
     return {
         type: 'HIDE_DETAILS',
         payload: movie
+    }
+}
+
+
+export const notInWatchlist = () => {
+    return {
+        type: 'NOT_IN_WATCHLIST'
+    }
+}
+
+export const inWatchlist = () => {
+    return {
+        type: 'IN_WATCHLIST'
     }
 }

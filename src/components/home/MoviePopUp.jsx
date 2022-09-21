@@ -2,12 +2,16 @@ import React from 'react';
 import { useState, useEffect } from 'react'
 import './MoviePopUp.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { showDetails, hideDetails, transitionDetails, transitionOffDetails } from '../../actions'
+import { showDetails, hideDetails, transitionDetails, transitionOffDetails, notInWatchlist, inWatchlist } from '../../actions'
 
 function MoviePopUp(props) {
     let [movie, setMovie] = useState([]);
+
+
     const activeUser = useSelector(state => state.userReducer);
     const popUp = useSelector(state => state.popUpReducer);
+    const watchListButton = useSelector(state => state.watchListButtonReducer);
+    
     const details = useSelector(state => state.detailsReducer);
 
     const dispatch = useDispatch();
@@ -18,6 +22,7 @@ function MoviePopUp(props) {
 
     useEffect(()=> {
         fetchMovie();
+        checkWatchlist();
     },[popUp])
 
     if(movie.title) {
@@ -34,11 +39,33 @@ function MoviePopUp(props) {
         })
         .catch(console.error)
     }
-
+    function checkWatchlist() {
+        const configs = {
+            method: "POST",
+            body: JSON.stringify({ userId: activeUser.userId, movieId: popUp.movieId }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+        }
+        console.log(activeUser.userId , popUp.movieId )
+        fetch(`http://localhost:4000/auth/checkWatchlist`, configs)
+        .then((res)=> res.json())
+        .then((json) => {
+            // console.log(json);
+            
+            //dispatch popUp.movieWasFound change to true vs false
+            if (json) {
+                dispatch(inWatchlist());
+            } else {
+                dispatch(notInWatchlist());
+            }
+            
+        })
+        .catch(console.error)
+    }
+    // console.log(watchListButton.movieWasFound);
     function handleAddToWatchlist() {
-        // Add current movie into user's mongodb watchlist movies array.
-        // Grab movie (movieId, MovieTitle, posterURL)
-        // Post movie to mongodb watchlist 
+
         const configs = {
             method: "PUT",
             body: JSON.stringify({ id: activeUser.userId, movie: { movieId: popUp.movieId, movieTitle: movieTitle, posterURL: poster } }),
@@ -46,16 +73,21 @@ function MoviePopUp(props) {
               "Content-Type": "application/json",
             },
         }
-        console.log(activeUser.userId)
-        console.log(popUp.movieId, movieTitle, poster);
+        // console.log(activeUser.userId)
+        // console.log(popUp.movieId, movieTitle, poster);
         
         fetch(`http://localhost:4000/auth/addToWatchlist`, configs)
-        .then((res)=> res.json())
-        .then((json) => {
-            console.log(json);
+        .then((res)=> {
+            console.log(res.json());
+            console.log('LINE 82');
+            checkWatchlist();
         })
+
         .catch(console.error)
 
+        
+
+        
     }
  
     function handleDetailsClick() {
@@ -88,11 +120,10 @@ function MoviePopUp(props) {
                     <h1>{ movie.title }</h1>
                     <p>{ movie.overview }</p>
                     <div className="pop-up-buttons">
-                        <button className='pop-up-watchlist' onClick={ () => { handleAddToWatchlist() } }>Add To Watch List</button>
+                        <button className='pop-up-watchlist' onClick={ () => { handleAddToWatchlist() } }>{ watchListButton.movieWasFound ? 'Remove From Watchlist' : 'Add To Watchlist' }</button>
                         <button className='pop-up-details' onClick={() => { handleDetailsClick() }}>More Details</button>
                     </div>
                 </div>
-                
             </div>
             <div className={ details.showDetails ? "background-gradient-none" : "background-gradient" }></div> { /* Here */ }
 
