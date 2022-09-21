@@ -25,7 +25,7 @@ function Home() {
 
         const response = await fetch('http://localhost:4000/auth/watchlist', configs);
         const watchList = await response.json();
-        console.log(watchList.movies);
+        console.log(watchList.movies); //TODO: WE GOT THE ARRAY 
     }
 
 

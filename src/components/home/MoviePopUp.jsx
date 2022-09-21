@@ -6,9 +6,10 @@ import { showDetails, hideDetails, transitionDetails, transitionOffDetails } fro
 
 function MoviePopUp(props) {
     let [movie, setMovie] = useState([]);
-
+    const activeUser = useSelector(state => state.userReducer);
     const popUp = useSelector(state => state.popUpReducer);
     const details = useSelector(state => state.detailsReducer);
+
     const dispatch = useDispatch();
 
     let poster = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
@@ -32,6 +33,29 @@ function MoviePopUp(props) {
             setMovie(json);
         })
         .catch(console.error)
+    }
+
+    function handleAddToWatchlist() {
+        // Add current movie into user's mongodb watchlist movies array.
+        // Grab movie (movieId, MovieTitle, posterURL)
+        // Post movie to mongodb watchlist 
+        const configs = {
+            method: "PUT",
+            body: JSON.stringify({ id: activeUser.userId, movie: { movieId: popUp.movieId, movieTitle: movieTitle, posterURL: poster } }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+        }
+        console.log(activeUser.userId)
+        console.log(popUp.movieId, movieTitle, poster);
+        
+        fetch(`http://localhost:4000/auth/addToWatchlist`, configs)
+        .then((res)=> res.json())
+        .then((json) => {
+            console.log(json);
+        })
+        .catch(console.error)
+
     }
  
     function handleDetailsClick() {
@@ -64,7 +88,7 @@ function MoviePopUp(props) {
                     <h1>{ movie.title }</h1>
                     <p>{ movie.overview }</p>
                     <div className="pop-up-buttons">
-                        <button className='pop-up-watchlist'>Add To Watch List</button>
+                        <button className='pop-up-watchlist' onClick={ () => { handleAddToWatchlist() } }>Add To Watch List</button>
                         <button className='pop-up-details' onClick={() => { handleDetailsClick() }}>More Details</button>
                     </div>
                 </div>
