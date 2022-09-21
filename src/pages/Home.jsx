@@ -7,6 +7,7 @@ import Backdrop from '../components/home/Backdrop';
 import Main from '../components/home/Main';
 import MoviePopUp from '../components/home/MoviePopUp';
 import Show from '../components/home/Show';
+import Footer from '../components/home/Footer';
 
 function Home() {
     const dispatch = useDispatch();
@@ -30,6 +31,7 @@ function Home() {
             <Main />
             <Show apikey={ process.env.REACT_APP_API_KEY_OMDB} />
             <MoviePopUp apikey={ process.env.REACT_APP_API_KEY_TMDB}/>
+            <Footer /> 
         </div>
     )
 }

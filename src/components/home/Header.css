@@ -1,12 +1,19 @@
-.navHeader {
-    width: 100%;
-    height: 2.5rem;
-    background-color: transparent;
-    padding-left: 3rem;
-    padding-right: 1rem;
+
+.nav {
     display: flex;
     align-items: center;
+    height: 2rem;
+}
+
+.navHeader {
+    width: 100%;
+    height: 2rem;
+    background-color: transparent;
+    padding-left: 2rem;
+    display: inline-flex;
+    align-items: center;
     justify-content: space-between;
+    margin-top: 1rem;
 }
 
 .navHeader a{
@@ -15,11 +22,19 @@
     text-decoration: none;
     color: var(--text-base);
     margin-left: 1rem;
+    display: inline;
 }
 
-.account img{
-    width: 1.6rem;
-    height: 1.6rem;
+
+
+.navHeader img{
+    width: 5rem;
+    height: 5rem;
+}
+
+.account img {
+    width: 2rem;
+    height: 2rem;
     display: flex;
     align-self: flex-end;
     margin-left: 1rem;

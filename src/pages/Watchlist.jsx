@@ -10,6 +10,29 @@ import Show from '../components/home/Show';
 
 function Home() {
     const dispatch = useDispatch();
+    const activeUser = useSelector(state => state.userReducer);
+
+    console.log('Watchlist Array');
+
+    async function getWatchlist() {
+        const configs = {
+            method: "POST",
+            body: JSON.stringify({ id: activeUser.userId }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+        }
+
+        const response = await fetch('http://localhost:4000/auth/watchlist', configs);
+        const watchList = await response.json();
+        console.log(watchList.movies); //TODO: WE GOT THE ARRAY 
+    }
+
+
+    useEffect(() => {
+        getWatchlist();
+    }, []);
+
     return (
         <div className='home-page'>
             <Header />
