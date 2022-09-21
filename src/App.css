@@ -6,8 +6,8 @@
 
 :root {
   --font-family: 'Source Sans Pro', sans-serif;
-  --main-bg-color: #121212;
-  --background-highlight: #1a1a1a;
+  --main-bg-color: #141414;
+  --background-highlight: #221F1F;
   --background-press: #000;
   --text-base: #fff;
   --text-subdued: #a7a7a7;
@@ -34,7 +34,7 @@ html {
 
 .horizontalContainer {
   background-color: transparent;
-  padding: 3em;
+  padding: .8rem;
 }
 
 .card-image {
@@ -80,11 +80,15 @@ h1 {
 }
 
 .horizontalList {
-  font-size: 1.8em;
+  font-size: 1.6em;
   font-weight: bold;
   color: rgba(255, 0, 0, 0.798);
   width: 40%;
   z-index: -1;
-  padding-left: 0.7em
+  padding-left: .8em
 }
 
+.horizontalList:hover {
+  color: rgba(255, 0, 0, 1);
+  cursor: pointer;
+}
