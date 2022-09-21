@@ -1,0 +1,14 @@
+.watchlist {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1em;
+    padding: 2em;
+}
+.watchlist img {
+    width: 11em;
+    border-radius: 10px;
+}
+.watchlist img:hover {
+    transform: scale(1.25);
+    transition: 0.5s;
+}

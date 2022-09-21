@@ -15,9 +15,13 @@ function Header() {
         <div className="navHeader">
             
             <div className="nav"><img src="/icons/icons8-netflix (1).svg" alt="home-logo" /><Link to={ '/' }>Home</Link><Link to={ '/movies' }>All Movies</Link><Link to={ activeUser.username !== '' ? '/watchlist' : '/login' }>Watch List</Link></div>
-            <p>{ activeUser.username }</p>
-            <Link to='/login'><div className="account"><img src="/icons/icons8-male-user.svg" alt="account-icon" /></div></Link>
+            
+            <div className="account">
+                <p>{ activeUser.username }</p>
+                <Link to='/login'><img src="/icons/icons8-male-user.svg" alt="account-icon" /></Link>
+            </div>
         </div>
+        
     )
 }
 
