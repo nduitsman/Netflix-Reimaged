@@ -1,5 +1,5 @@
 
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { hidePopUp } from '../actions';
 import Header from '../components/home/Header';
@@ -7,12 +7,14 @@ import Backdrop from '../components/home/Backdrop';
 import Main from '../components/home/Main';
 import MoviePopUp from '../components/home/MoviePopUp';
 import Show from '../components/home/Show';
+import './Watchlist.css'
 
-function Home() {
+function WatchList() {
+    let [watchListArr, setWatchListArr] = useState([]);
+
     const dispatch = useDispatch();
     const activeUser = useSelector(state => state.userReducer);
 
-    console.log('Watchlist Array');
 
     async function getWatchlist() {
         const configs = {
@@ -25,7 +27,8 @@ function Home() {
 
         const response = await fetch('http://localhost:4000/auth/watchlist', configs);
         const watchList = await response.json();
-        console.log(watchList.movies); //TODO: WE GOT THE ARRAY 
+        
+        setWatchListArr(watchList.movies); 
     }
 
 
@@ -33,14 +36,27 @@ function Home() {
         getWatchlist();
     }, []);
 
+    console.log(watchListArr)
+
     return (
-        <div className='home-page'>
+        <div className='watchlist-page'>
             <Header />
-            <h1>WATCH LIST</h1>
+            <h1 className = 'horizontalList'>WATCH LIST</h1>
+            <div className = 'watchlist'>
+                {watchListArr?.map((movie) => {
+                    return (
+                        <div>
+                            <img src={movie.posterURL} alt='movie.movieTitle'></img>
+                        </div>
+                    )} 
+                )}
+            </div>
+           
+{/*    
             <Show apikey={ process.env.REACT_APP_API_KEY_OMDB} />
-            <MoviePopUp apikey={ process.env.REACT_APP_API_KEY_TMDB}/>
+            <MoviePopUp apikey={ process.env.REACT_APP_API_KEY_TMDB}/> */}
         </div>
     )
 }
 
-export default Home;
+export default WatchList;

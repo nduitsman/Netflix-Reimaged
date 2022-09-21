@@ -25,7 +25,15 @@
     display: inline;
 }
 
+.account {
+    display: flex;
+    align-items: center;
+    font-size: 1.3em;
+}
 
+.account p {
+    margin-right: -0.5em;
+}
 
 .navHeader img{
     width: 5rem;
@@ -37,6 +45,5 @@
     height: 2rem;
     display: flex;
     align-self: flex-end;
-    margin-left: 1rem;
     margin-right: 1rem;
 }
