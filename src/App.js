@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { clearUserToken, setUserToken } from './utils/authToken';
-import { setCurrentUser } from './actions';
+import { setCurrentUser, signOut, signIn } from './actions';
 
 function App() {
   const dispatch = useDispatch();
@@ -52,7 +52,7 @@ function App() {
 
 
       dispatch(setCurrentUser(currentUser.user.username, currentUser.user._id));
-
+      dispatch(signIn())
       setUserToken(currentUser.token);
       setIsAuthenticated(currentUser.loggedIn);
 
@@ -80,17 +80,19 @@ function App() {
   }
 
   const logout = async (data) => {
+    console.log('data: '+ data)
     try {
       const configs = {
-        method: "GET",
-        body: JSON.stringify(data), //! we need current user id here
+        method: "POST",
+        body: JSON.stringify({data: data}), //! we need current user id here
         headers: {
           "Content-Type": 'application/json'
         }
       }
-      const response = await fetch("http://localhost4000:/movie/logout", configs);
-      const returnedUser = await response.json();
+      const response = await fetch("http://localhost:4000/movie/logout", configs);
 
+      const returnedUser = await response.json();
+      dispatch(signOut())
       setIsAuthenticated(returnedUser.isLoggedIn);
       setUserToken(returnedUser.token);
 

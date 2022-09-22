@@ -4,10 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { signIn, signOut } from '../../actions';
 import { useNavigate, Link } from 'react-router-dom'
 
-function Header() {
+function Header(props) {
     const dispatch = useDispatch();
 
     const activeUser = useSelector(state => state.userReducer);
+    const isLoggedIn = useSelector(state => state.loggedReducer);
 
     return (
         <div className="navHeader">
@@ -25,17 +26,17 @@ function Header() {
             </div>
 
             <div className="account">
-                {console.log(activeUser.username)}
-                {(activeUser.username) ? <p>{activeUser.username}</p> : <Link to='/login'><p>Login/Register</p></Link>}
+                {(isLoggedIn) ? <p>{activeUser.username}</p> : <Link to='/login'><p>Login/Register</p></Link>}
                 <div className='dropdown'>
                     <img src="/icons/icons8-male-user.svg" alt="account-icon" />
                     <div className='dropdown-element-container'>
                         <Link to='/watchlist'>
                             <p className='dropdown-element'>Watchlist</p>
                         </Link>
-                        <Link to='/logout' >
-                            <p className='dropdown-element'>Logout</p>
-                        </Link>
+
+                        {(activeUser.username) ? 
+                            <Link to='/login'><p className='dropdown-element' onClick={() => { props.logout(activeUser.userId) }}>Logout</p></Link> : null }
+                     
                         <Link to='/deleteAccount' >
                             <p className='dropdown-element account-delete'>Delete Account</p>
                         </Link>

@@ -93,10 +93,11 @@
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     color: black;
-    width: 114%;
+    width: 110%;
     right: 0.8em;
     padding-left: 0.5em;
     padding-right: 0.5em;
+    cursor: pointer;
 }
 
 .dropdown-element:hover {
