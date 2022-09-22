@@ -2,7 +2,8 @@ const initialState = {
     movieId: 532639,
     trailerId: 'imv03rS6Vb0',
     title: 'Pinocchio',
-    isHidden: true
+    isHidden: true,
+    movieWasFound: false
 }
 
 const popUpReducer = (state = initialState, action) => {

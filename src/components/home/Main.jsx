@@ -7,6 +7,7 @@ import Genres from './Genres';
 
 function Main() {
     const ref = useRef(null);
+    const activeUser = useSelector(state => state.userReducer);
     const backdropData = useSelector(state => state.backdropReducer);
     const backdropTitle = backdropData.movieTitle
 
@@ -21,13 +22,34 @@ function Main() {
         }
     };
         
-    
+    function handleAddToWatchlist() {
+        // Add current movie into user's mongodb watchlist movies array.
+        // Grab movie (movieId, MovieTitle, posterURL)
+        // Post movie to mongodb watchlist 
+        console.log(backdropData);
+        const configs = {
+            method: "PUT",
+            body: JSON.stringify({ id: activeUser.userId, movie: { movieId: backdropData.movieId, movieTitle: backdropTitle, posterURL: backdropData.posterURL } }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+        }
+
+        
+        fetch(`http://localhost:4000/auth/addToWatchlist`, configs)
+        .then((res)=> res.json())
+        .then((json) => {
+            console.log(json);
+        })
+        .catch(console.error)
+
+    }
 
     return (
         <div className="horizontalContainer" onClick={ (event) => { handleClick(event) } }>
             <div className="preview-details">
                 <h1 className='preview-title'>{ backdropTitle.toUpperCase() }</h1>
-                <div><button className='preview-buttons'>Add To Watch List</button><button className='preview-buttons'>More Details</button></div> 
+                <div><button className='preview-buttons' onClick={ () => { handleAddToWatchlist() } }>Add To Watch List</button><button className='preview-buttons'>More Details</button></div> 
             </div>
             <Genres />
             <h1 className = 'horizontalList'>Trending Today</h1>
