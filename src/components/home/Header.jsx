@@ -36,6 +36,9 @@ function Header() {
                         <Link to='/logout' >
                             <p className='dropdown-element'>Logout</p>
                         </Link>
+                        <Link to='/deleteAccount' >
+                            <p className='dropdown-element account-delete'>Delete Account</p>
+                        </Link>
                     </div>
                 </div>
             </div>

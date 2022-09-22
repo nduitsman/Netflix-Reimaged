@@ -104,3 +104,7 @@
     border-radius: 5px;
     color: white;
 }
+.account-delete {
+    color: rgb(179, 4, 4);
+    font-size: 1em;
+}
