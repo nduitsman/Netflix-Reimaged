@@ -15,6 +15,7 @@
     align-items: center;
     justify-content: space-between;
     margin-top: 1rem;
+    margin-bottom: 3rem;
 }
 
 .navHeader a{
@@ -24,6 +25,7 @@
     color: var(--text-base);
     margin-left: 1rem;
     display: inline;
+    font-size: 1.3rem;
 }
 
 .account {
@@ -31,14 +33,30 @@
     align-items: center;
     font-size: 1.3em;
 }
-
 .account p {
-    margin-right: -0.5em;
+    margin-right: 0.5em;
 }
-
-.navHeader img{
-    width: 5rem;
-    height: 5rem;
+.logos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: -1em;
+    position: relative;
+    top: -0.5em;
+    
+}
+.logoT {
+    position: relative;
+    top: 1em;
+    width: 6rem;
+    height: 6rem;
+}
+.logoB {
+    position: relative;
+    top: -1.3em;
+    width: 7rem;
+    height: 2rem;
 }
 
 .account img {
@@ -47,4 +65,28 @@
     display: flex;
     align-self: flex-end;
     margin-right: 1rem;
+}
+.dropdown:hover .dropdown-elements {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    right: 0.5em;
+}
+.dropdown-elements {
+    position: absolute;
+    display: none;
+    background-color: rgba(0,0,0,50%);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+.dropdown-element p {
+    padding: 0;
+    font-weight: bold;
+    padding: 0.5em 1em;
+    margin-right: 0;
+    margin-left: -1rem;
+}
+.dropdown-element p:hover {
+    background-color: rgba(0,0,0,70%);
+    border-radius: 5px;
 }
