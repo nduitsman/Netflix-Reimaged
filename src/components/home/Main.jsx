@@ -106,7 +106,7 @@ function Main() {
 
     function fetchTrailer(title) {
         console.log(title);
-        fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${ title }%20trailer&key=AIzaSyCVAjMhStDjG2OltI6HZ98uyd9PmiNwDtc`)
+        fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${ title }%20trailer&key=AIzaSyAKl4917EDlNdDl_ckFnOLc5gaYIR7uWco`)
         .then((res)=> res.json())
         .then((json) => {
             console.log(json)
@@ -120,7 +120,7 @@ function Main() {
         <div className="horizontalContainer" onClick={ (event) => { handleClick(event) } }>
             <div className="preview-details">
                 <h1 className='preview-title'>{ backdropTitle.toUpperCase() }</h1>
-                <div><button className='preview-buttons' onClick={ () => { handleAddToWatchlist() } }>{ previewWatchListButton.movieWasFound && activeUser.userId ? 'Remove From Watchlist' : 'Add To Watchlist' }</button><button className='preview-buttons' onClick={() => { handleDetailsClick() }}>More Details</button></div> 
+                <div><button className='preview-buttons' onClick={() => { handleDetailsClick() }}>More Details</button></div> 
             </div>
             <Genres />
             <h1 className = 'horizontalList'>Trending Today</h1>

@@ -2,19 +2,84 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import './Show.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { hideDetails, hidePopUp, transitionOffDetails } from '../../actions';
-import MoviesList from './MoviesList';
+import { showDetails, hideDetails, hidePopUp, transitionDetails, transitionOffDetails, notInWatchlist, inWatchlist } from '../../actions';
+import { useNavigate } from 'react-router-dom';
 
 function Show(props) {
     
     let [movie, setMovie] = useState([]);
     const details = useSelector(state => state.detailsReducer);
+    const popUp = useSelector(state => state.popUpReducer);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const activeUser = useSelector(state => state.userReducer);
+    let poster = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+    const watchListButton = useSelector(state => state.watchListButtonReducer);
 
     function handleBack() {
         dispatch(hideDetails());
         dispatch(hidePopUp());
         dispatch(transitionOffDetails());
+    }
+
+    function handleAddToWatchlist() {
+        if (!activeUser.userId) {
+            navigate('/login');
+        }
+        const configs = {
+            method: "PUT",
+            body: JSON.stringify({ id: activeUser.userId, movie: { movieId: popUp.movieId, movieTitle: details.title, posterURL: poster } }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+        }
+       
+        console.log('Before Fetch');
+        if (!watchListButton.movieWasFound) {
+            fetch(`http://localhost:4000/auth/addToWatchlist`, configs)
+            .then((res)=> {
+                console.log(res.json());
+                checkWatchlist();
+                // console.log('After CheckWatchlist');
+            })
+            .catch(console.error)
+        } else {
+            fetch(`http://localhost:4000/auth/removeFromWatchlist`, configs)
+            .then((res)=> {
+                console.log(res.json());
+                checkWatchlist();
+                console.log('After remove');
+            })
+            .catch(console.error)
+        }
+    }
+
+    function checkWatchlist() {
+        console.log('Check Watchlist Called')
+        const configs = {
+            method: "POST",
+            body: JSON.stringify({ userId: activeUser.userId, movieId: popUp.movieId }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+        }
+        // console.log(activeUser.userId , popUp.movieId )
+        fetch(`http://localhost:4000/auth/checkWatchlist`, configs)
+        .then((res)=> res.json())
+        .then((isInWatchlist) => {
+            // console.log(json);
+            
+            //dispatch popUp.movieWasFound change to true vs false
+            if (isInWatchlist) {
+                console.log('In watchlist')
+                dispatch(inWatchlist());
+            } else {
+                console.log('Not in watchlist')
+                dispatch(notInWatchlist());
+            }
+            
+        })
+        .catch(console.error)
     }
 
     useEffect(() => {
@@ -55,7 +120,7 @@ function Show(props) {
                 <img className='back-arrow' src="./icons/icons8-back.svg" alt="back-arrow" onClick={() => { handleBack() }}/>
                 <div className = 'movie-details-container'>
                     <h1>{ movie.Title }</h1>
-                    <button>Add to Watch List</button>
+                    <button onClick={ () => { handleAddToWatchlist() }}>{ watchListButton.movieWasFound && activeUser.userId ? 'Remove From Watchlist' : 'Add To Watchlist' }</button>
                     <h2><span className = 'details-span'>Genre: </span>{ movie.Genre }</h2>
                     <h2><span className = 'details-span'>Director: </span> { movie.Director }</h2>
                     <h2><span className = 'details-span'>Cast: </span> { movie.Actors }</h2>
