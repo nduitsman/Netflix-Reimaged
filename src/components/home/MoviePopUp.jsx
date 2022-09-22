@@ -82,7 +82,6 @@ function MoviePopUp(props) {
             console.log('LINE 82');
             checkWatchlist();
         })
-
         .catch(console.error)
 
         
