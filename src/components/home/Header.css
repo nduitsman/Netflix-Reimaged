@@ -75,7 +75,7 @@
 .dropdown-elements {
     position: absolute;
     display: none;
-    background-color: rgba(0,0,0,50%);
+    background-color: rgba(255,255,255,50%);
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     border-radius: 5px;
 }
@@ -85,8 +85,10 @@
     padding: 0.5em 1em;
     margin-right: 0;
     margin-left: -1rem;
+    color: black;
 }
 .dropdown-element p:hover {
     background-color: rgba(0,0,0,70%);
     border-radius: 5px;
+    color: white;
 }
