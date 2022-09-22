@@ -13,9 +13,9 @@ function Header() {
         <div className="navHeader">
 
             <div className="nav">
-                <div className = 'logos'>
-                    <img src="/icons/icons8-netflix (1).svg" alt="home-logo" className='logoT'/>
-                    <img src='https://fontmeme.com/permalink/220922/08ec9f704160b7fa96e6b73e4f459b6b.png' alt='home-logo' className='logoB'/>
+                <div className='logos'>
+                    <img src="/icons/icons8-netflix (1).svg" alt="home-logo" className='logoT' />
+                    <img src='https://fontmeme.com/permalink/220922/08ec9f704160b7fa96e6b73e4f459b6b.png' alt='home-logo' className='logoB' />
                 </div>
 
 

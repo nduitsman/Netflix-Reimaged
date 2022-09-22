@@ -72,8 +72,8 @@ function App() {
           "Content-Type": "application/json"
         }
       }
-      const response = await fetch('http://localhost4000:/auth/deleteAccount', config);
-      console.log(response);
+      const response = await fetch('http://localhost4000:/auth/deleteAccount', configs);
+      console.log(response); //show to user?
     } catch (err) {
       console.log(err);
     }
@@ -104,7 +104,7 @@ function App() {
       <Route path='/register' element={<Register signUp={registerUser} />}></Route>
       <Route path='/login' element={<Login logIn={loginUser} />}></Route>
       <Route path='/watchlist' element={<Watchlist />}></Route>
-      <Route path='/' element={<Home />}></Route>
+      <Route path='/' element={<Home logout={logout} deleteAccount={deleteAccount} />}></Route>
     </Routes>
   );
 
