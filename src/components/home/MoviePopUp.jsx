@@ -67,7 +67,7 @@ function MoviePopUp(props) {
         })
         .catch(console.error)
     }
-    // console.log(watchListButton.movieWasFound);
+
     function handleAddToWatchlist() {
         if (!activeUser.userId) {
             navigate('/login');
@@ -79,9 +79,7 @@ function MoviePopUp(props) {
               "Content-Type": "application/json",
             },
         }
-        // console.log(activeUser.userId)
-        // console.log(popUp.movieId, movieTitle, poster);
-        
+       
         console.log('Before Fetch');
         if (!watchListButton.movieWasFound) {
             fetch(`http://localhost:4000/auth/addToWatchlist`, configs)
@@ -104,7 +102,6 @@ function MoviePopUp(props) {
  
     function handleDetailsClick() {
         if(!details.showDetails){
-            // console.log(movieTitle)
             dispatch(showDetails(popUp.movieId, movieTitle ));
             dispatch(transitionDetails());
         } else {
@@ -125,7 +122,7 @@ function MoviePopUp(props) {
     }
 
     return (
-        <div className={ handleClassName() }> { /* Here */ }
+        <div className={ handleClassName() }> 
             <div className={ details.showDetails ? "pop-up-detail-wrapper-none" : "pop-up-detail-wrapper" }>{ /* Here */ }
             <img src={ poster } alt={ movieTitle }/>
                 <div className="pop-up-detail">
@@ -141,15 +138,13 @@ function MoviePopUp(props) {
 
             <div className={ details.showDetails ? "pop-up-video-show" : "pop-up-video"}>
                 
-                { popUp.trailerId ? <iframe 
-                    // width="1920" 
-                    // height="1080"
+                {/* { popUp.trailerId ? <iframe 
                     src={ `https://www.youtube.com/embed/${ popUp.trailerId }?&playlist=${ popUp.trailerId }&autoplay=1&loop=1&start=30&end=60&modestbranding=1&controls=0&mute=1` } 
                     frameBorder="0"
                     allowFullScreen>
                         
                 </iframe> : <img width='100%' src={ backdrop } alt={ movie.title } />}
-                
+                 */}
                 
                 
             </div>

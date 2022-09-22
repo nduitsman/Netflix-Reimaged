@@ -21,9 +21,6 @@ function Backdrop() {
             let movieId = json.results[randomIndex].id;
             let posterURL = `https://image.tmdb.org/t/p/w500${json.results[randomIndex].poster_path}`;
             
-            console.log(json.results[randomIndex])
-            console.log(movieId);
-            console.log(posterURL);
             if (json.results[randomIndex].name) {
                 movieTitle = json.results[randomIndex].name;
                 dispatch(setPreview(backdrop_path, movieTitle, movieId, posterURL));
@@ -34,9 +31,6 @@ function Backdrop() {
         })
         .catch(console.error)
     }
-
-    // console.log(backdropData);
-
 
     useEffect(()=> {
         fetchMovie();

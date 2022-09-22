@@ -36,8 +36,6 @@ function WatchList() {
         getWatchlist();
     }, []);
 
-    console.log(watchListArr)
-
     return (
         <div className='watchlist-page'>
             <Header />

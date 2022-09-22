@@ -13,7 +13,6 @@ const popUpReducer = (state = initialState, action) => {
         case 'HIDE':
             return { ...state, isHidden: true };
         case 'UPDATE_ID':
-            // console.log(action.payload)
             return {...state, trailerId: action.payload}
         default: 
             return state;

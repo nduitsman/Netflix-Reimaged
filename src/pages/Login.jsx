@@ -1,5 +1,5 @@
 
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { useState } from 'react';
 import Header from '../components/home/Header';
 import '../components/home/Login.css'
@@ -12,8 +12,6 @@ function Login(props) {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const createdUserToken = await props.logIn(input);
-        console.log(createdUserToken)
-
         if (createdUserToken.user) {
             navigate('/');
 
@@ -31,7 +29,7 @@ function Login(props) {
         <>
             <Header />
             <div className='login-container'>
-                <h1 className='header'>Netflicks</h1>
+                <h1 className='header'>Login</h1>
                 <form onSubmit={handleSubmit}>
                     <label>
                         <div className='form-line'>
@@ -47,6 +45,8 @@ function Login(props) {
                     </label>
                     <input type="submit" className='login-button' value="login" />
                 </form >
+                <p>Don't an account? <Link to='/register' className ='signup-link'><span>Sign up now!</span></Link></p>
+                <p>Forgot password? Bummer</p>
             </div >
         </>
     )
