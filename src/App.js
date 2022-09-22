@@ -13,9 +13,6 @@ function App() {
   const dispatch = useDispatch();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  
-
-
   const registerUser = async (data) => {
     try {
       const configs = {
@@ -52,10 +49,10 @@ function App() {
       const response = await fetch("http://localhost:4000/auth/login", configs)
       const currentUser = await response.json();
 
-  
-     
+
+
       dispatch(setCurrentUser(currentUser.user.username, currentUser.user._id));
-      
+
       setUserToken(currentUser.token);
       setIsAuthenticated(currentUser.loggedIn);
 
@@ -63,6 +60,42 @@ function App() {
     } catch (err) {
       clearUserToken();
       setIsAuthenticated(false);
+    }
+  }
+
+  const deleteAccount = async (data) => {
+    try {
+      const configs = {
+        method: "DELETE",
+        body: JSON.stringify(data), //! we need current user id here
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }
+      const response = await fetch('http://localhost4000:/auth/deleteAccount', config);
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  const logout = async (data) => {
+    try {
+      const configs = {
+        method: "GET",
+        body: JSON.stringify(data), //! we need current user id here
+        headers: {
+          "Content-Type": 'application/json'
+        }
+      }
+      const response = await fetch("http://localhost4000:/movie/logout", configs);
+      const returnedUser = await response.json();
+
+      setIsAuthenticated(returnedUser.isLoggedIn);
+      setUserToken(returnedUser.token);
+
+    } catch (err) {
+      console.log(err);
     }
   }
 
