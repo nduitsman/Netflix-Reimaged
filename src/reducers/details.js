@@ -9,7 +9,6 @@ const initialState = {
 const detailsReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'SHOW_DETAILS':
-            // console.log(action.payload);
             return { ...state, title: action.payload.title,isHidden: false };
         case 'HIDE_DETAILS':
             return { ...state, isHidden: true};
