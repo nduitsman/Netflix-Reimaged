@@ -9,15 +9,15 @@ function Header() {
 
     const activeUser = useSelector(state => state.userReducer);
     
-    console.log(activeUser);
-
     return (
         <div className="navHeader">
             
             <div className="nav"><img src="/icons/icons8-netflix (1).svg" alt="home-logo" /><Link to={ '/' }>Home</Link><Link to={ '/movies' }>All Movies</Link><Link to={ activeUser.username !== '' ? '/watchlist' : '/login' }>Watch List</Link></div>
             
             <div className="account">
-                <p>{ activeUser.username }</p>
+                {console.log(activeUser.username)}
+                {(activeUser.username) ? <p>{ activeUser.username }</p> : <Link to='/login'><p>Login/Register</p></Link>}
+                
                 <Link to='/login'><img src="/icons/icons8-male-user.svg" alt="account-icon" /></Link>
             </div>
         </div>

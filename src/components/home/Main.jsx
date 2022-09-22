@@ -23,10 +23,6 @@ function Main() {
     };
         
     function handleAddToWatchlist() {
-        // Add current movie into user's mongodb watchlist movies array.
-        // Grab movie (movieId, MovieTitle, posterURL)
-        // Post movie to mongodb watchlist 
-        console.log(backdropData);
         const configs = {
             method: "PUT",
             body: JSON.stringify({ id: activeUser.userId, movie: { movieId: backdropData.movieId, movieTitle: backdropTitle, posterURL: backdropData.posterURL } }),

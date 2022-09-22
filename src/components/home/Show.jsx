@@ -12,18 +12,15 @@ function Show(props) {
     const dispatch = useDispatch();
 
     function handleBack() {
-        // set details page to hide
-        // set pop up to hide
         dispatch(hideDetails());
         dispatch(hidePopUp());
         dispatch(transitionOffDetails());
     }
-    // console.log(details);
+
     useEffect(() => {
         fetch(`https://www.omdbapi.com/?apikey=${props.apikey}&t=${details.title}`)
             .then((res) => res.json())
             .then((json) => {
-                // console.log(json);
                 setMovie(json);
             })
             .catch(console.error)
@@ -52,7 +49,6 @@ function Show(props) {
         }
     }
 
-// console.log(details.isHidden)
     return (
         <div className = 'showContainer'>
             <div className = { details.isHidden ? 'movie-show-page-hidden' : 'movie-show-page'}>
