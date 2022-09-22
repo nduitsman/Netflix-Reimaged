@@ -93,3 +93,15 @@ export const inWatchlist = () => {
         type: 'IN_WATCHLIST'
     }
 }
+
+export const previewNotInWatchlist = () => {
+    return {
+        type: 'PREVIEW_NOT_IN_WATCHLIST'
+    }
+}
+
+export const previewInWatchlist = () => {
+    return {
+        type: 'PREVIEW_IN_WATCHLIST'
+    }
+}

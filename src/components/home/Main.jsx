@@ -2,7 +2,7 @@ import './Main.css';
 import MoviesList from './MoviesList';
 import { useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { showDetails, hidePopUp, updateId, hideDetails, transitionDetails, transitionOffDetails, notInWatchlist, inWatchlist } from '../../actions'
+import { showDetails, hidePopUp, updateId, hideDetails, transitionDetails, transitionOffDetails, notInWatchlist, inWatchlist, previewNotInWatchlist, previewInWatchlist } from '../../actions'
 import Genres from './Genres';
 import { useNavigate } from 'react-router-dom';
 
@@ -11,6 +11,8 @@ function Main() {
     const activeUser = useSelector(state => state.userReducer);
     const backdropData = useSelector(state => state.backdropReducer);
     const watchListButton = useSelector(state => state.watchListButtonReducer);
+    const previewWatchListButton = useSelector(state => state.previewWatchListButtonReducer);
+    
     const popUp = useSelector(state => state.popUpReducer);
     const details = useSelector(state => state.detailsReducer);
     const backdropTitle = backdropData.movieTitle
@@ -45,10 +47,10 @@ function Main() {
             //dispatch popUp.movieWasFound change to true vs false
             if (isInWatchlist) {
                 console.log('In watchlist')
-                dispatch(inWatchlist());
+                dispatch(previewInWatchlist());
             } else {
                 console.log('Not in watchlist')
-                dispatch(notInWatchlist());
+                dispatch(previewNotInWatchlist());
             }
             
         })
@@ -70,7 +72,7 @@ function Main() {
         // console.log(popUp.movieId, movieTitle, poster);
         
         console.log('Before Fetch');
-        if (!watchListButton.movieWasFound) {
+        if (!previewWatchListButton.movieWasFound) {
             fetch(`http://localhost:4000/auth/addToWatchlist`, configs)
             .then((res)=> {
                 console.log(res.json());
@@ -118,7 +120,7 @@ function Main() {
         <div className="horizontalContainer" onClick={ (event) => { handleClick(event) } }>
             <div className="preview-details">
                 <h1 className='preview-title'>{ backdropTitle.toUpperCase() }</h1>
-                <div><button className='preview-buttons' onClick={ () => { handleAddToWatchlist() } }>{ watchListButton.movieWasFound && activeUser.userId ? 'Remove From Watchlist' : 'Add To Watchlist' }</button><button className='preview-buttons' onClick={() => { handleDetailsClick() }}>More Details</button></div> 
+                <div><button className='preview-buttons' onClick={ () => { handleAddToWatchlist() } }>{ previewWatchListButton.movieWasFound && activeUser.userId ? 'Remove From Watchlist' : 'Add To Watchlist' }</button><button className='preview-buttons' onClick={() => { handleDetailsClick() }}>More Details</button></div> 
             </div>
             <Genres />
             <h1 className = 'horizontalList'>Trending Today</h1>

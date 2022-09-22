@@ -5,6 +5,7 @@ import backdropReducer from './backdrop';
 import detailsReducer from './details';
 import userReducer from './user';
 import watchListButtonReducer from './watchListButton';
+import previewWatchListButtonReducer from './previewWatchListButton';
 
 const allReducers = combineReducers({
     loggedReducer, //loggedReducer: loggedReducer
@@ -12,7 +13,8 @@ const allReducers = combineReducers({
     backdropReducer, 
     detailsReducer,
     userReducer,
-    watchListButtonReducer
+    watchListButtonReducer,
+    previewWatchListButtonReducer
 })
 
 export default allReducers;
