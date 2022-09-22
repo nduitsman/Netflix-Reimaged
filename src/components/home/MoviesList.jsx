@@ -2,28 +2,64 @@ import React from 'react';
 // import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { showPopUp, hidePopUp, updateId } from '../../actions';
+import { showPopUp, hidePopUp, updateId, notInWatchlist, inWatchlist } from '../../actions';
 
 function MoviesList(props) {
     let [moviesOne, setMoviesOne] = useState([]);
-
+    const activeUser = useSelector(state => state.userReducer);
     const popUp = useSelector(state => state.popUpReducer);
     
     let popUpHidden = true;
     
     const dispatch = useDispatch();
 
+    function checkWatchlist() {
+        console.log('Check Watchlist Called')
+        console.log(activeUser.userId, popUp.movieId)
+        const configs = {
+            method: "POST",
+            body: JSON.stringify({ userId: activeUser.userId, movieId: popUp.movieId }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+        }
+        // console.log(activeUser.userId , popUp.movieId )
+        fetch(`http://localhost:4000/auth/checkWatchlist`, configs)
+        .then((res)=> res.json())
+        .then((isInWatchlist) => {
+            // console.log(json);
+            
+            //dispatch popUp.movieWasFound change to true vs false
+            if (isInWatchlist) {
+                console.log('In watchlist')
+                dispatch(inWatchlist());
+            } else {
+                console.log('Not in watchlist')
+                dispatch(notInWatchlist());
+            }
+            
+        })
+        .catch(() => {
+            console.log('Log in to add to watchlist')
+        })
+    }
+
     function handleClick(movieId, movieTitle) {
+        
         if (!popUp.isHidden && (popUp.movieId === movieId)) {
             dispatch(hidePopUp(movieId, movieTitle));
+            setTimeout(checkWatchlist(), 2000);
             popUpHidden = !popUpHidden;
         } else if (!popUp.isHidden && (popUp.movieId !== movieId)) {
             fetchTrailer(movieTitle)
             dispatch(showPopUp(movieId, movieTitle));
+            setTimeout(checkWatchlist(), 2000);
+            
             popUpHidden = !popUpHidden;
         } else {
-            fetchTrailer(movieTitle)
+            fetchTrailer(movieTitle);
             dispatch(showPopUp(movieId, movieTitle));
+            setTimeout(checkWatchlist(), 2000);
             popUpHidden = !popUpHidden;
         }
     }

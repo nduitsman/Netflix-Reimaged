@@ -2,18 +2,19 @@ import React from 'react';
 import { useState, useEffect } from 'react'
 import './MoviePopUp.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { showDetails, hideDetails, transitionDetails, transitionOffDetails, notInWatchlist, inWatchlist } from '../../actions'
+import { showDetails, hideDetails, transitionDetails, transitionOffDetails, notInWatchlist, inWatchlist } from '../../actions';
+import { useNavigate } from 'react-router-dom';
 
 function MoviePopUp(props) {
     let [movie, setMovie] = useState([]);
 
 
     const activeUser = useSelector(state => state.userReducer);
-    const popUp = useSelector(state => state.popUpReducer);
-    const watchListButton = useSelector(state => state.watchListButtonReducer);
     
+    const watchListButton = useSelector(state => state.watchListButtonReducer);
+    const popUp = useSelector(state => state.popUpReducer);
     const details = useSelector(state => state.detailsReducer);
-
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     let poster = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
@@ -22,7 +23,6 @@ function MoviePopUp(props) {
 
     useEffect(()=> {
         fetchMovie();
-        checkWatchlist();
     },[popUp])
 
     if(movie.title) {
@@ -39,7 +39,9 @@ function MoviePopUp(props) {
         })
         .catch(console.error)
     }
+
     function checkWatchlist() {
+        console.log('Check Watchlist Called')
         const configs = {
             method: "POST",
             body: JSON.stringify({ userId: activeUser.userId, movieId: popUp.movieId }),
@@ -47,14 +49,18 @@ function MoviePopUp(props) {
               "Content-Type": "application/json",
             },
         }
-
+        // console.log(activeUser.userId , popUp.movieId )
         fetch(`http://localhost:4000/auth/checkWatchlist`, configs)
         .then((res)=> res.json())
-        .then((json) => {
-
-            if (json) {
+        .then((isInWatchlist) => {
+            // console.log(json);
+            
+            //dispatch popUp.movieWasFound change to true vs false
+            if (isInWatchlist) {
+                console.log('In watchlist')
                 dispatch(inWatchlist());
             } else {
+                console.log('Not in watchlist')
                 dispatch(notInWatchlist());
             }
             
@@ -63,7 +69,9 @@ function MoviePopUp(props) {
     }
 
     function handleAddToWatchlist() {
-
+        if (!activeUser.userId) {
+            navigate('/login');
+        }
         const configs = {
             method: "PUT",
             body: JSON.stringify({ id: activeUser.userId, movie: { movieId: popUp.movieId, movieTitle: movieTitle, posterURL: poster } }),
@@ -71,13 +79,25 @@ function MoviePopUp(props) {
               "Content-Type": "application/json",
             },
         }
-        
-        fetch(`http://localhost:4000/auth/addToWatchlist`, configs)
-        .then((res)=> {
-            checkWatchlist();
-        })
-
-        .catch(console.error)     
+       
+        console.log('Before Fetch');
+        if (!watchListButton.movieWasFound) {
+            fetch(`http://localhost:4000/auth/addToWatchlist`, configs)
+            .then((res)=> {
+                console.log(res.json());
+                checkWatchlist();
+                // console.log('After CheckWatchlist');
+            })
+            .catch(console.error)
+        } else {
+            fetch(`http://localhost:4000/auth/removeFromWatchlist`, configs)
+            .then((res)=> {
+                console.log(res.json());
+                checkWatchlist();
+                console.log('After remove');
+            })
+            .catch(console.error)
+        }
     }
  
     function handleDetailsClick() {
@@ -109,7 +129,7 @@ function MoviePopUp(props) {
                     <h1>{ movie.title }</h1>
                     <p>{ movie.overview }</p>
                     <div className="pop-up-buttons">
-                        <button className='pop-up-watchlist' onClick={ () => { handleAddToWatchlist() } }>{ watchListButton.movieWasFound ? 'Remove From Watchlist' : 'Add To Watchlist' }</button>
+                        <button className='pop-up-watchlist' onClick={ () => { handleAddToWatchlist() } }>{ watchListButton.movieWasFound && activeUser.userId ? 'Remove From Watchlist' : 'Add To Watchlist' }</button>
                         <button className='pop-up-details' onClick={() => { handleDetailsClick() }}>More Details</button>
                     </div>
                 </div>
