@@ -29,9 +29,13 @@ function Header() {
                 {(activeUser.username) ? <p>{activeUser.username}</p> : <Link to='/login'><p>Login/Register</p></Link>}
                 <div className='dropdown'>
                     <img src="/icons/icons8-male-user.svg" alt="account-icon" />
-                    <div className='dropdown-elements'>
-                        <Link to='/watchlist' className='dropdown-element'><p>Watchlist</p></Link>
-                        <Link to='/logout' className='dropdown-element'><p>Logout</p></Link>
+                    <div className='dropdown-element-container'>
+                        <Link to='/watchlist'>
+                            <p className='dropdown-element'>Watchlist</p>
+                        </Link>
+                        <Link to='/logout' >
+                            <p className='dropdown-element'>Logout</p>
+                        </Link>
                     </div>
                 </div>
             </div>
