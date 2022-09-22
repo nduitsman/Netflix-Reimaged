@@ -138,13 +138,13 @@ function MoviePopUp(props) {
 
             <div className={ details.showDetails ? "pop-up-video-show" : "pop-up-video"}>
                 
-                {/* { popUp.trailerId ? <iframe 
+                { popUp.trailerId ? <iframe 
                     src={ `https://www.youtube.com/embed/${ popUp.trailerId }?&playlist=${ popUp.trailerId }&autoplay=1&loop=1&start=30&end=60&modestbranding=1&controls=0&mute=1` } 
                     frameBorder="0"
                     allowFullScreen>
                         
                 </iframe> : <img width='100%' src={ backdrop } alt={ movie.title } />}
-                 */}
+                
                 
                 
             </div>

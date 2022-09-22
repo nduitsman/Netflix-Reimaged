@@ -65,7 +65,7 @@ function MoviesList(props) {
     }
 
     function fetchTrailer(title) {
-        fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${ title }%20trailer&key=AIzaSyCVAjMhStDjG2OltI6HZ98uyd9PmiNwDtc`)
+        fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${ title }%20trailer&key=AIzaSyAKl4917EDlNdDl_ckFnOLc5gaYIR7uWco`)
         .then((res)=> res.json())
         .then((json) => {
             let trailerId = json.items[0].id.videoId;
