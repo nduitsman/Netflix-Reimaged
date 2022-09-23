@@ -1,16 +1,14 @@
 import React from 'react';
-// import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { showPopUp, hidePopUp, updateId, notInWatchlist, inWatchlist } from '../../actions';
 
 function MoviesList(props) {
     let [moviesOne, setMoviesOne] = useState([]);
+
     const activeUser = useSelector(state => state.userReducer);
     const popUp = useSelector(state => state.popUpReducer);
-    
     let popUpHidden = true;
-    
     const dispatch = useDispatch();
 
     function checkWatchlist() {
@@ -103,6 +101,6 @@ function MoviesList(props) {
     </section>
   )
 }
-// on click discover what movie title we clicked
+
 
 export default MoviesList
