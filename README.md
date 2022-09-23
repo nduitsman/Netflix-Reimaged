@@ -1,6 +1,5 @@
 # Project Three - Netflix Reimagined
 
-(DEMO GIF OF WORKING PRODUCT)
 ![Netflix-Reimagined-Demo-Compressed](https://user-images.githubusercontent.com/108159910/191875985-c0817a66-5cce-4df3-aa99-59dc30b49ad9.gif)
 
 Version 0.1  
@@ -49,6 +48,8 @@ MOVIES
 # API
 
 [The Movie DB API Documentation](https://developers.themoviedb.org/3/getting-started/introduction)
+[Open Movie DB API Documentation](http://www.omdbapi.com/)
+[Youtube API Documentation](https://developers.google.com/youtube/v3)
 
 ## Now Playing Response
 
