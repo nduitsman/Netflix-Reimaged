@@ -2,11 +2,10 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import './Show.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { showDetails, hideDetails, hidePopUp, transitionDetails, transitionOffDetails, notInWatchlist, inWatchlist } from '../../actions';
+import { hideDetails, hidePopUp, transitionOffDetails, notInWatchlist, inWatchlist } from '../../actions';
 import { useNavigate } from 'react-router-dom';
 
 function Show(props) {
-    
     let [movie, setMovie] = useState([]);
     const details = useSelector(state => state.detailsReducer);
     const popUp = useSelector(state => state.popUpReducer);
@@ -34,28 +33,22 @@ function Show(props) {
             },
         }
        
-        console.log('Before Fetch');
         if (!watchListButton.movieWasFound) {
-            fetch(`http://localhost:4000/auth/addToWatchlist`, configs)
-            .then((res)=> {
-                console.log(res.json());
+            fetch(`https://netflix-reimagined.herokuapp.com/auth/addToWatchlist`, configs)
+            .then(()=> {
                 checkWatchlist();
-                // console.log('After CheckWatchlist');
             })
             .catch(console.error)
         } else {
-            fetch(`http://localhost:4000/auth/removeFromWatchlist`, configs)
+            fetch(`https://netflix-reimagined.herokuapp.com/auth/removeFromWatchlist`, configs)
             .then((res)=> {
-                console.log(res.json());
                 checkWatchlist();
-                console.log('After remove');
             })
             .catch(console.error)
         }
     }
 
     function checkWatchlist() {
-        console.log('Check Watchlist Called')
         const configs = {
             method: "POST",
             body: JSON.stringify({ userId: activeUser.userId, movieId: popUp.movieId }),
@@ -63,18 +56,12 @@ function Show(props) {
               "Content-Type": "application/json",
             },
         }
-        // console.log(activeUser.userId , popUp.movieId )
-        fetch(`http://localhost:4000/auth/checkWatchlist`, configs)
+        fetch(`https://netflix-reimagined.herokuapp.com/auth/checkWatchlist`, configs)
         .then((res)=> res.json())
         .then((isInWatchlist) => {
-            // console.log(json);
-            
-            //dispatch popUp.movieWasFound change to true vs false
             if (isInWatchlist) {
-                console.log('In watchlist')
                 dispatch(inWatchlist());
             } else {
-                console.log('Not in watchlist')
                 dispatch(notInWatchlist());
             }
             

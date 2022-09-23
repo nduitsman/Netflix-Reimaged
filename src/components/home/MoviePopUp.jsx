@@ -7,10 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 function MoviePopUp(props) {
     let [movie, setMovie] = useState([]);
-
-
     const activeUser = useSelector(state => state.userReducer);
-    
     const watchListButton = useSelector(state => state.watchListButtonReducer);
     const popUp = useSelector(state => state.popUpReducer);
     const details = useSelector(state => state.detailsReducer);
@@ -49,13 +46,9 @@ function MoviePopUp(props) {
               "Content-Type": "application/json",
             },
         }
-        // console.log(activeUser.userId , popUp.movieId )
-        fetch(`http://localhost:4000/auth/checkWatchlist`, configs)
+        fetch(`https://netflix-reimagined.herokuapp.com/auth/checkWatchlist`, configs)
         .then((res)=> res.json())
         .then((isInWatchlist) => {
-            // console.log(json);
-            
-            //dispatch popUp.movieWasFound change to true vs false
             if (isInWatchlist) {
                 console.log('In watchlist')
                 dispatch(inWatchlist());
@@ -80,17 +73,14 @@ function MoviePopUp(props) {
             },
         }
        
-        console.log('Before Fetch');
         if (!watchListButton.movieWasFound) {
-            fetch(`http://localhost:4000/auth/addToWatchlist`, configs)
-            .then((res)=> {
-                console.log(res.json());
+            fetch(`https://netflix-reimagined.herokuapp.com/auth/addToWatchlist`, configs)
+            .then(()=> {
                 checkWatchlist();
-                // console.log('After CheckWatchlist');
             })
             .catch(console.error)
         } else {
-            fetch(`http://localhost:4000/auth/removeFromWatchlist`, configs)
+            fetch(`https://netflix-reimagined.herokuapp.com/auth/removeFromWatchlist`, configs)
             .then((res)=> {
                 console.log(res.json());
                 checkWatchlist();
@@ -108,7 +98,6 @@ function MoviePopUp(props) {
             dispatch(hideDetails());
             dispatch(transitionOffDetails());
         }
-
     }
 
     function handleClassName() {
@@ -123,7 +112,7 @@ function MoviePopUp(props) {
 
     return (
         <div className={ handleClassName() }> 
-            <div className={ details.showDetails ? "pop-up-detail-wrapper-none" : "pop-up-detail-wrapper" }>{ /* Here */ }
+            <div className={ details.showDetails ? "pop-up-detail-wrapper-none" : "pop-up-detail-wrapper" }>
             <img src={ poster } alt={ movieTitle }/>
                 <div className="pop-up-detail">
                     <h1>{ movie.title }</h1>
@@ -134,18 +123,14 @@ function MoviePopUp(props) {
                     </div>
                 </div>
             </div>
-            <div className={ details.showDetails ? "background-gradient-none" : "background-gradient" }></div> { /* Here */ }
+            <div className={ details.showDetails ? "background-gradient-none" : "background-gradient" }></div>
 
             <div className={ details.showDetails ? "pop-up-video-show" : "pop-up-video"}>
-                
                 { popUp.trailerId ? <iframe 
                     src={ `https://www.youtube.com/embed/${ popUp.trailerId }?&playlist=${ popUp.trailerId }&autoplay=1&loop=1&start=30&end=60&modestbranding=1&controls=0&mute=1` } 
                     frameBorder="0"
-                    allowFullScreen>
-                        
+                    allowFullScreen>  
                 </iframe> : <img width='100%' src={ backdrop } alt={ movie.title } />}
-                
-                
                 
             </div>
         </div>

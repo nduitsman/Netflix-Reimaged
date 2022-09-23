@@ -12,9 +12,9 @@ function Login(props) {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const createdUserToken = await props.logIn(input);
+        
         if (createdUserToken.user) {
             navigate('/');
-
         } else {
             navigate('/login');
         }

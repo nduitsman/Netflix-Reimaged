@@ -12,8 +12,6 @@ function MoviesList(props) {
     const dispatch = useDispatch();
 
     function checkWatchlist() {
-        console.log('Check Watchlist Called')
-        console.log(activeUser.userId, popUp.movieId)
         const configs = {
             method: "POST",
             body: JSON.stringify({ userId: activeUser.userId, movieId: popUp.movieId }),
@@ -21,18 +19,13 @@ function MoviesList(props) {
               "Content-Type": "application/json",
             },
         }
-        // console.log(activeUser.userId , popUp.movieId )
-        fetch(`http://localhost:4000/auth/checkWatchlist`, configs)
+
+        fetch(`https://netflix-reimagined.herokuapp.com/auth/checkWatchlist`, configs)
         .then((res)=> res.json())
         .then((isInWatchlist) => {
-            // console.log(json);
-            
-            //dispatch popUp.movieWasFound change to true vs false
             if (isInWatchlist) {
-                console.log('In watchlist')
                 dispatch(inWatchlist());
             } else {
-                console.log('Not in watchlist')
                 dispatch(notInWatchlist());
             }
             
@@ -43,16 +36,14 @@ function MoviesList(props) {
     }
 
     function handleClick(movieId, movieTitle) {
-        
         if (!popUp.isHidden && (popUp.movieId === movieId)) {
             dispatch(hidePopUp(movieId, movieTitle));
             setTimeout(checkWatchlist(), 2000);
             popUpHidden = !popUpHidden;
         } else if (!popUp.isHidden && (popUp.movieId !== movieId)) {
-            fetchTrailer(movieTitle)
+            fetchTrailer(movieTitle);
             dispatch(showPopUp(movieId, movieTitle));
             setTimeout(checkWatchlist(), 2000);
-            
             popUpHidden = !popUpHidden;
         } else {
             fetchTrailer(movieTitle);
@@ -101,6 +92,5 @@ function MoviesList(props) {
     </section>
   )
 }
-
 
 export default MoviesList

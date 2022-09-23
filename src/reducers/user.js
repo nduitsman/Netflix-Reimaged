@@ -7,7 +7,7 @@ const initialState = {
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'SET_CURRENTUSER':
-            return { ...state , username: action.payload.username, userId: action.payload.userId }; //TODO: ADD WATCHLIST ID
+            return { ...state , username: action.payload.username, userId: action.payload.userId }; 
         default: 
             return state;
     }

@@ -8,8 +8,8 @@ import watchListButtonReducer from './watchListButton';
 import previewWatchListButtonReducer from './previewWatchListButton';
 
 const allReducers = combineReducers({
-    loggedReducer, //loggedReducer: loggedReducer
-    popUpReducer, //popUpReducer: popUpReducer
+    loggedReducer, 
+    popUpReducer, 
     backdropReducer, 
     detailsReducer,
     userReducer,

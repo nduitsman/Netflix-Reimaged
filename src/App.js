@@ -3,7 +3,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Watchlist from './pages/Watchlist';
 import Register from './pages/Register';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { clearUserToken, setUserToken, getUserToken } from './utils/authToken';
@@ -49,8 +49,6 @@ function App() {
       const response = await fetch("https://netflix-reimagined.herokuapp.com/auth/login", configs)
       const currentUser = await response.json();
 
-
-
       dispatch(setCurrentUser(currentUser.user.username, currentUser.user._id));
       dispatch(signIn())
       setUserToken(currentUser.token);
@@ -67,21 +65,20 @@ function App() {
     try {
       const configs = {
         method: "DELETE",
-        body: JSON.stringify(data), 
+        body: JSON.stringify(data),
+
         headers: {
           "Content-Type": "application/json",
           'Authorization': `bearer ${getUserToken()}`
         }
       }
       const response = await fetch('https://netflix-reimagined.herokuapp.com/auth/deleteAccount', configs);
-      console.log(response); //show to user?
     } catch (err) {
       console.log(err);
     }
   }
 
   const logout = async (data) => {
-    console.log('data: '+ data)
     try {
       const configs = {
         method: "POST",
@@ -110,7 +107,6 @@ function App() {
       <Route path='/' element={<Home logout={logout} deleteAccount={deleteAccount} />}></Route>
     </Routes>
   );
-
 }
 
 export default App;
