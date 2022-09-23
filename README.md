@@ -2,7 +2,7 @@
 
 ![Netflix-Reimagined-Demo-Compressed](https://user-images.githubusercontent.com/108159910/191875985-c0817a66-5cce-4df3-aa99-59dc30b49ad9.gif)
 
-Version 0.1  
+Version 41.8 
 Prepared by Brendon Van | Nick Duitsman | Sean Buchas
 
 General Assembly SEIR-725ec | Unit 3 Project
