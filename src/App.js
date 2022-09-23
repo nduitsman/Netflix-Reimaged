@@ -6,7 +6,7 @@ import Register from './pages/Register';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { clearUserToken, setUserToken } from './utils/authToken';
+import { clearUserToken, setUserToken, getUserToken } from './utils/authToken';
 import { setCurrentUser, signOut, signIn } from './actions';
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
         },
       }
 
-      const newUser = await fetch("http://localhost:4000/auth/register", configs)
+      const newUser = await fetch("https://netflix-reimagined.herokuapp.com/auth/register", configs)
 
       const parsedUser = await newUser.json();
 
@@ -46,7 +46,7 @@ function App() {
           "Content-Type": "application/json",
         },
       }
-      const response = await fetch("http://localhost:4000/auth/login", configs)
+      const response = await fetch("https://netflix-reimagined.herokuapp.com/auth/login", configs)
       const currentUser = await response.json();
 
 
@@ -67,12 +67,13 @@ function App() {
     try {
       const configs = {
         method: "DELETE",
-        body: JSON.stringify(data), //! we need current user id here
+        body: JSON.stringify(data), 
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          'Authorization': `bearer ${getUserToken()}`
         }
       }
-      const response = await fetch('http://localhost4000:/auth/deleteAccount', configs);
+      const response = await fetch('https://netflix-reimagined.herokuapp.com/auth/deleteAccount', configs);
       console.log(response); //show to user?
     } catch (err) {
       console.log(err);
@@ -84,12 +85,12 @@ function App() {
     try {
       const configs = {
         method: "POST",
-        body: JSON.stringify({data: data}), //! we need current user id here
+        body: JSON.stringify({data: data}),
         headers: {
           "Content-Type": 'application/json'
         }
       }
-      const response = await fetch("http://localhost:4000/movie/logout", configs);
+      const response = await fetch("https://netflix-reimagined.herokuapp.com/movie/logout", configs);
 
       const returnedUser = await response.json();
       dispatch(signOut())
@@ -110,19 +111,6 @@ function App() {
     </Routes>
   );
 
-
-
-  //  const isLogged = useSelector(state => state.loggedReducer);
-  // return (
-  //   <>
-  //     { isLogged ? <Home /> : <Login />}
-  //   </>
-
-  //<Routes>
-  //  <Route path='/' element={<Home />}></Route>
-  //  <Route path='/login' element={<Login />}></Route>
-  //</Routes>
-  // );
 }
 
 export default App;
