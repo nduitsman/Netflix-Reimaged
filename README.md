@@ -45,8 +45,7 @@ Utilized a MERN stack to build a full stack application in 1 week with de-couple
 
 ---
 # ERDs
-USER
-MOVIES
+![Netflix-Reimagined-ERD](https://user-images.githubusercontent.com/108159910/191883897-e21742db-bfff-4841-8f91-e4ebd173cc42.png)
 
 ---
 # API
