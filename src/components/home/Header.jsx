@@ -3,6 +3,7 @@ import './Header.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { signIn, signOut } from '../../actions';
 import { useNavigate, Link } from 'react-router-dom'
+import { pureFinalPropsSelectorFactory } from 'react-redux/es/connect/selectorFactory';
 
 function Header(props) {
     const dispatch = useDispatch();
@@ -37,8 +38,8 @@ function Header(props) {
                         {(activeUser.username) ? 
                             <Link to='/login'><p className='dropdown-element' onClick={() => { props.logout(activeUser.userId) }}>Logout</p></Link> : null }
                      
-                        <Link to='/deleteAccount' >
-                            <p className='dropdown-element account-delete'>Delete Account</p>
+                        <Link to='/login' >
+                            <p className='dropdown-element account-delete' onClick={()=> { props.deleteAccount(activeUser.userId) }}>Delete Account</p>
                         </Link>
                     </div>
                 </div>
