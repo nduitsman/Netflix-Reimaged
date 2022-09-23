@@ -15,7 +15,6 @@ function Header(props) {
                     <img src='https://fontmeme.com/permalink/220922/08ec9f704160b7fa96e6b73e4f459b6b.png' alt='home-logo' className='logoB' />
                 </div>
                 <Link to={'/'}>Home</Link>
-                <Link to={'/movies'}>All Movies</Link>
                 <Link to={activeUser.username !== '' ? '/watchlist' : '/login'}>Watch List</Link>
             </div>
 
