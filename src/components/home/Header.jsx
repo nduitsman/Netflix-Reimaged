@@ -32,7 +32,7 @@ function Header(props) {
                             <Link to='/login'><p className='dropdown-element' onClick={() => { props.logout(activeUser.userId) }}>Logout</p></Link> : null }
                      
                         <Link to='/login' >
-                            <p className='dropdown-element account-delete'>Delete Account</p>
+                            <p className='dropdown-element account-delete' onClick={()=> { props.deleteAccount(activeUser.userId) }}>Delete Account</p>
                         </Link>
                     </div>
                 </div>

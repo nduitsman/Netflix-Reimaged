@@ -6,7 +6,7 @@ import Register from './pages/Register';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { clearUserToken, setUserToken } from './utils/authToken';
+import { clearUserToken, setUserToken, getUserToken } from './utils/authToken';
 import { setCurrentUser, signOut, signIn } from './actions';
 
 function App() {
@@ -66,12 +66,13 @@ function App() {
       const configs = {
         method: "DELETE",
         body: JSON.stringify(data),
+
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          'Authorization': `bearer ${getUserToken()}`
         }
       }
       const response = await fetch('https://netflix-reimagined.herokuapp.com/auth/deleteAccount', configs);
-      console.log(response);
     } catch (err) {
       console.log(err);
     }

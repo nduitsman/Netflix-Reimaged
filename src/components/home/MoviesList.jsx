@@ -5,6 +5,7 @@ import { showPopUp, hidePopUp, updateId, notInWatchlist, inWatchlist } from '../
 
 function MoviesList(props) {
     let [moviesOne, setMoviesOne] = useState([]);
+
     const activeUser = useSelector(state => state.userReducer);
     const popUp = useSelector(state => state.popUpReducer);
     let popUpHidden = true;
