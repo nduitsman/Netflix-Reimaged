@@ -1,16 +1,12 @@
 import React from 'react';
-// import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { showPopUp, hidePopUp, updateId } from '../../actions';
 
 function MoviesList(props) {
     let [moviesOne, setMoviesOne] = useState([]);
-
     const popUp = useSelector(state => state.popUpReducer);
-    
     let popUpHidden = true;
-    
     const dispatch = useDispatch();
 
     function handleClick(movieId, movieTitle) {
@@ -67,6 +63,6 @@ function MoviesList(props) {
     </section>
   )
 }
-// on click discover what movie title we clicked
+
 
 export default MoviesList
