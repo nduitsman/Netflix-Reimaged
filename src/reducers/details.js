@@ -3,7 +3,6 @@ const initialState = {
     title: 'Pinocchio',
     isHidden: true,
     showDetails: false
-    
 }
 
 const detailsReducer = (state = initialState, action) => {

@@ -12,17 +12,12 @@ import Footer from '../components/home/Footer';
 function Home(props) {
   const dispatch = useDispatch();
 
-
-
   useEffect(() => {
-
     const handleMovement = event => {
       dispatch(hidePopUp());
     };
-
     window.addEventListener('scroll', handleMovement);
   }, []);
-
 
   return (
     <div className='home-page'>

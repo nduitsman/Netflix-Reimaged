@@ -8,8 +8,6 @@ function Backdrop() {
     const dispatch = useDispatch();
     const backdropData = useSelector(state => state.backdropReducer);
 
-
-    
     function fetchMovie() {
         fetch(process.env.REACT_APP_TRENDING_URL)
         .then((res)=> res.json())
