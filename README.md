@@ -8,8 +8,7 @@ Prepared by Brendon Van | Nick Duitsman | Sean Buchas
 General Assembly SEIR-725ec | Unit 3 Project
 September 15 2022
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/4b33aefe-a449-4fba-9d5d-0b96db0b064c/deploy-status)](https://app.netlify.com/sites/legendary-sunburst-8800a7/deploys)
-https://netflix-reimagined.netlify.app/
+https://netflixreimagined.netlify.app/
 
 
 ## Project Description
